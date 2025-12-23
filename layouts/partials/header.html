@@ -1,0 +1,13 @@
+<header>
+    <div class="container">
+        <a href="/" class="site-title">{{ .Site.Title }}</a>
+        <nav>
+            <ul>
+                {{ range .Site.Menus.main }}
+                <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+                {{ end }}
+                <li><button id="theme-toggle" class="theme-toggle">🌓</button></li>
+            </ul>
+        </nav>
+    </div>
+</header>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+    <meta name="description" content="{{ .Site.Params.description }}">
+
+    <style>
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f5f5;
+            --text-primary: #333333;
+            --text-secondary: #666666;
+            --link-color: #0066cc;
+            --border-color: #e0e0e0;
+            --code-bg: #f4f4f4;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #1a1a1a;
+            --bg-secondary: #2d2d2d;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --link-color: #66b3ff;
+            --border-color: #404040;
+            --code-bg: #2d2d2d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--bg-secondary);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--link-color);
+        }
+
+        main {
+            padding: 2rem 0;
+            min-height: calc(100vh - 200px);
+        }
+
+        footer {
+            background-color: var(--bg-secondary);
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-color);
+            margin-top: 3rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--bg-secondary);
+        }
+
+        a {
+            color: var(--link-color);
+        }
+
+        .wikilink {
+            color: var(--link-color);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--link-color);
+        }
+
+        .wikilink:hover {
+            border-bottom-style: solid;
+        }
+
+        code {
+            background-color: var(--code-bg);
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        pre {
+            background-color: var(--code-bg);
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    {{ partial "header.html" . }}
+
+    <main class="container">
+        {{ block "main" . }}{{ end }}
+    </main>
+
+    {{ partial "footer.html" . }}
+
+    <script>
+        // Dark mode toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        // Check for saved theme preference or default to 'light' mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', currentTheme);
+
+        themeToggle.addEventListener('click', function() {
+            const theme = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+        });
+    </script>
+</body>
+</html>

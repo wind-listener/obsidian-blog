@@ -1,0 +1,60 @@
+baseURL = 'https://example.org/'
+languageCode = 'zh-CN'
+title = '我的 Obsidian 博客'
+theme = ''
+
+[params]
+  description = "基于 Hugo 和 Obsidian 的个人博客"
+  dateFormat = "2006-01-02"
+
+  # Obsidian 特性
+  enableWikilinks = true
+  enableBacklinks = true
+  enableGraph = true
+
+  [params.author]
+    name = "Your Name"
+    email = "your.email@example.com"
+
+[taxonomies]
+  tag = 'tags'
+  category = 'categories'
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true  # 允许 HTML
+  [markup.highlight]
+    style = 'monokai'
+    lineNos = true
+
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']
+  page = ['HTML']
+  section = ['HTML', 'RSS']
+
+[menu]
+  [[menu.main]]
+    name = "首页"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "文章"
+    url = "/posts/"
+    weight = 2
+  [[menu.main]]
+    name = "标签"
+    url = "/tags/"
+    weight = 3
+  [[menu.main]]
+    name = "分类"
+    url = "/categories/"
+    weight = 4
+  [[menu.main]]
+    name = "搜索"
+    url = "/search/"
+    weight = 5
+  [[menu.main]]
+    name = "知识图谱"
+    url = "/graph/"
+    weight = 6

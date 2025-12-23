@@ -1,0 +1,96 @@
+{{ define "title" }}{{ .Site.Title }} - {{ .Site.Params.description }}{{ end }}
+
+{{ define "main" }}
+<div class="home">
+    <h1>欢迎来到我的数字花园 🌱</h1>
+    <p class="intro">{{ .Site.Params.description }}</p>
+
+    <section class="recent-posts">
+        <h2>最新文章</h2>
+        {{ range first 10 (where .Site.RegularPages "Section" "posts") }}
+        <article class="post-item">
+            <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+            <div class="post-meta">
+                <time>{{ .Date.Format (.Site.Params.dateFormat | default "2006-01-02") }}</time>
+                {{ with .Params.tags }}
+                <span class="tags">
+                    {{ range . }}
+                    <a href="{{ "tags" | absURL }}/{{ . | urlize }}" class="tag">#{{ . }}</a>
+                    {{ end }}
+                </span>
+                {{ end }}
+            </div>
+            {{ if .Summary }}
+            <p class="summary">{{ .Summary }}</p>
+            {{ end }}
+        </article>
+        {{ end }}
+    </section>
+</div>
+
+<style>
+    .home h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+    }
+
+    .intro {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        margin-bottom: 3rem;
+    }
+
+    .recent-posts h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        color: var(--text-primary);
+    }
+
+    .post-item {
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .post-item:last-child {
+        border-bottom: none;
+    }
+
+    .post-item h3 {
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .post-item h3 a {
+        text-decoration: none;
+        color: var(--text-primary);
+    }
+
+    .post-item h3 a:hover {
+        color: var(--link-color);
+    }
+
+    .post-meta {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .tags {
+        margin-left: 1rem;
+    }
+
+    .tag {
+        margin-right: 0.5rem;
+        text-decoration: none;
+        color: var(--link-color);
+        font-size: 0.85rem;
+    }
+
+    .summary {
+        color: var(--text-secondary);
+        line-height: 1.6;
+    }
+</style>
+{{ end }}
