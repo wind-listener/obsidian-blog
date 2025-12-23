@@ -58,3 +58,7 @@ theme = ''
     name = "知识图谱"
     url = "/graph/"
     weight = 6
+
+[security]
+  [security.exec]
+    allow = ['^(dart-)?sass(-embedded)?$', '^go$', '^npx$', '^postcss$', '^asciidoctor$', '^rst2html(\.py)?$']
