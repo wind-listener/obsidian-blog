@@ -1,158 +1,418 @@
 {{ define "title" }}{{ .Title }} - {{ .Site.Title }}{{ end }}
 
 {{ define "main" }}
-<article class="single">
-    <header class="post-header">
-        <h1>{{ .Title }}</h1>
-        <div class="post-meta">
-            <time>{{ .Date.Format (.Site.Params.dateFormat | default "2006-01-02") }}</time>
-            {{ with .Params.categories }}
-            <span class="categories">
-                {{ range . }}
-                <a href="{{ "categories" | absURL }}/{{ . | urlize }}">{{ . }}</a>
+<div class="article-layout">
+    <!-- 左侧目录树 -->
+    <aside class="sidebar">
+        <div class="sidebar-content">
+            <h3 class="sidebar-title">📚 内容导航</h3>
+            <nav class="directory-tree">
+                {{ $currentSection := .Section }}
+                {{ $currentPage := . }}
+
+                {{ $sections := slice
+                    "01 电子信息与计算机专业"
+                    "02 Artificial Intelligence"
+                    "03 Mathematics"
+                    "04 健康管理"
+                    "05 厨艺"
+                    "06 工具使用经验和技巧"
+                    "07 现代社会生存指南"
+                    "08 哲学"
+                    "09 心理学"
+                    "10 经济学"
+                    "11 语言学"
+                    "12 管理学：行政、招聘和方法论"
+                }}
+
+                {{ range $sections }}
+                    {{ $section := . }}
+                    {{ $sectionPage := $.Site.GetPage (printf "/%s" .) }}
+                    {{ if $sectionPage }}
+                        <div class="tree-section {{ if eq $currentSection . }}active{{ end }}">
+                            <a href="/{{ . | urlize }}/" class="section-link">
+                                {{ . }}
+                            </a>
+                            {{ if eq $currentSection . }}
+                                <ul class="tree-pages">
+                                    {{ range $sectionPage.RegularPages }}
+                                        <li class="{{ if eq $currentPage.RelPermalink .RelPermalink }}current{{ end }}">
+                                            <a href="{{ .Permalink }}">{{ .Title }}</a>
+                                        </li>
+                                    {{ end }}
+                                </ul>
+                            {{ end }}
+                        </div>
+                    {{ end }}
                 {{ end }}
-            </span>
-            {{ end }}
+            </nav>
         </div>
-        {{ with .Params.tags }}
-        <div class="tags">
-            {{ range . }}
-            <a href="{{ "tags" | absURL }}/{{ . | urlize }}" class="tag">#{{ . }}</a>
-            {{ end }}
-        </div>
-        {{ end }}
-    </header>
+    </aside>
 
-    <div class="post-content">
-        {{ .Content }}
-    </div>
+    <!-- 主内容区 -->
+    <article class="article-main">
+        <header class="article-header">
+            <nav class="breadcrumb">
+                <a href="/">首页</a>
+                <span>/</span>
+                <a href="/{{ .Section | urlize }}/">{{ .Section }}</a>
+                <span>/</span>
+                <span>{{ .Title }}</span>
+            </nav>
 
-    {{ if .Site.Params.enableBacklinks }}
-    <div class="backlinks">
-        <h3>反向链接</h3>
-        <div id="backlinks-content">
-            <p class="backlinks-placeholder">这篇文章暂时没有反向链接</p>
+            <h1>{{ .Title }}</h1>
+
+            <div class="article-meta">
+                <time>📅 {{ .Date.Format "2006-01-02" }}</time>
+                {{ with .Params.tags }}
+                <div class="tags">
+                    {{ range . }}
+                    <a href="{{ "tags" | absURL }}/{{ . | urlize }}" class="tag">#{{ . }}</a>
+                    {{ end }}
+                </div>
+                {{ end }}
+            </div>
+        </header>
+
+        <div class="article-content">
+            {{ .Content }}
         </div>
-    </div>
-    {{ end }}
-</article>
+
+        <!-- Giscus 评论系统 -->
+        <div class="comments-section">
+            <h3>💬 评论</h3>
+            <div class="giscus-container">
+                <p class="comments-notice">
+                    评论功能基于 GitHub Discussions。要使用评论功能，请：
+                    <br>1. 在 GitHub 上创建一个公开仓库
+                    <br>2. 启用 Discussions 功能
+                    <br>3. 访问 <a href="https://giscus.app/zh-CN" target="_blank">giscus.app</a> 获取配置代码
+                    <br>4. 替换下方的配置参数
+                </p>
+                <!-- Giscus 脚本 - 需要配置 -->
+                <script src="https://giscus.app/client.js"
+                        data-repo="YOUR_GITHUB_USERNAME/YOUR_REPO_NAME"
+                        data-repo-id="YOUR_REPO_ID"
+                        data-category="General"
+                        data-category-id="YOUR_CATEGORY_ID"
+                        data-mapping="pathname"
+                        data-strict="0"
+                        data-reactions-enabled="1"
+                        data-emit-metadata="0"
+                        data-input-position="top"
+                        data-theme="preferred_color_scheme"
+                        data-lang="zh-CN"
+                        data-loading="lazy"
+                        crossorigin="anonymous"
+                        async>
+                </script>
+            </div>
+        </div>
+    </article>
+</div>
 
 <style>
-    .single {
-        max-width: 800px;
+    .article-layout {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 3rem;
+        max-width: 1400px;
+        margin: 0 auto;
     }
 
-    .post-header {
-        margin-bottom: 2rem;
-        padding-bottom: 1rem;
-        border-bottom: 2px solid var(--border-color);
+    @media (max-width: 1024px) {
+        .article-layout {
+            grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+            display: none;
+        }
     }
 
-    .post-header h1 {
-        font-size: 2.5rem;
+    /* 侧边栏样式 */
+    .sidebar {
+        position: sticky;
+        top: 20px;
+        height: fit-content;
+        max-height: calc(100vh - 40px);
+        overflow-y: auto;
+    }
+
+    .sidebar-content {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 1.5rem;
+    }
+
+    .sidebar-title {
+        font-size: 0.9rem;
+        font-weight: 600;
         margin-bottom: 1rem;
         color: var(--text-primary);
+        border-bottom: 2px solid var(--link-color);
+        padding-bottom: 0.5rem;
     }
 
-    .post-meta {
-        color: var(--text-secondary);
-        font-size: 0.95rem;
+    .directory-tree {
+        font-size: 0.85rem;
+    }
+
+    .tree-section {
         margin-bottom: 0.75rem;
     }
 
-    .post-meta .categories {
-        margin-left: 1rem;
-    }
-
-    .post-meta .categories a {
-        background-color: var(--bg-secondary);
-        padding: 0.2rem 0.6rem;
-        border-radius: 4px;
+    .section-link {
+        display: block;
+        padding: 0.5rem 0.75rem;
+        color: var(--text-secondary);
         text-decoration: none;
-        margin-right: 0.5rem;
-    }
-
-    .tags {
-        margin-top: 0.5rem;
-    }
-
-    .tag {
-        background-color: var(--bg-secondary);
-        padding: 0.3rem 0.8rem;
         border-radius: 4px;
-        text-decoration: none;
-        margin-right: 0.5rem;
-        display: inline-block;
-        font-size: 0.9rem;
+        font-weight: 500;
+        transition: all 0.2s;
     }
 
-    .tag:hover {
-        background-color: var(--link-color);
+    .section-link:hover {
+        background: var(--bg-primary);
+        color: var(--link-color);
+    }
+
+    .tree-section.active .section-link {
+        background: var(--link-color);
         color: white;
     }
 
-    .post-content {
-        font-size: 1.1rem;
+    .tree-pages {
+        list-style: none;
+        margin: 0.5rem 0 0 0;
+        padding-left: 1rem;
+        border-left: 2px solid var(--border-color);
+    }
+
+    .tree-pages li {
+        margin: 0.25rem 0;
+    }
+
+    .tree-pages a {
+        display: block;
+        padding: 0.3rem 0.5rem;
+        color: var(--text-secondary);
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        transition: all 0.2s;
+    }
+
+    .tree-pages a:hover {
+        background: var(--bg-primary);
+        color: var(--link-color);
+    }
+
+    .tree-pages li.current a {
+        background: var(--bg-primary);
+        color: var(--link-color);
+        font-weight: 600;
+        border-left: 3px solid var(--link-color);
+        padding-left: calc(0.5rem - 3px);
+    }
+
+    /* 文章主体样式 */
+    .article-main {
+        max-width: 800px;
+        min-width: 0;
+    }
+
+    .breadcrumb {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .breadcrumb a {
+        color: var(--link-color);
+        text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+        text-decoration: underline;
+    }
+
+    .breadcrumb span:last-child {
+        color: var(--text-primary);
+    }
+
+    .article-header {
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 2px solid var(--border-color);
+    }
+
+    .article-header h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+        line-height: 1.3;
+    }
+
+    .article-meta {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        flex-wrap: wrap;
+    }
+
+    .tags {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+
+    .tag {
+        background: var(--bg-secondary);
+        padding: 0.25rem 0.75rem;
+        border-radius: 12px;
+        text-decoration: none;
+        font-size: 0.8rem;
+        border: 1px solid var(--border-color);
+        transition: all 0.2s;
+    }
+
+    .tag:hover {
+        background: var(--link-color);
+        color: white;
+        border-color: var(--link-color);
+    }
+
+    .article-content {
+        font-size: 0.95rem;
         line-height: 1.8;
+        color: var(--text-primary);
     }
 
-    .post-content h2 {
-        font-size: 1.8rem;
+    .article-content h2 {
+        font-size: 1.6rem;
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 0.5rem;
+    }
+
+    .article-content h3 {
+        font-size: 1.3rem;
         margin-top: 2rem;
-        margin-bottom: 1rem;
-        color: var(--text-primary);
-    }
-
-    .post-content h3 {
-        font-size: 1.4rem;
-        margin-top: 1.5rem;
         margin-bottom: 0.75rem;
+        font-weight: 600;
         color: var(--text-primary);
     }
 
-    .post-content p {
+    .article-content h4 {
+        font-size: 1.1rem;
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+    }
+
+    .article-content p {
         margin-bottom: 1rem;
     }
 
-    .post-content ul, .post-content ol {
-        margin-left: 2rem;
+    .article-content ul,
+    .article-content ol {
+        margin-left: 1.5rem;
         margin-bottom: 1rem;
     }
 
-    .post-content li {
+    .article-content li {
         margin-bottom: 0.5rem;
     }
 
-    .post-content img {
+    .article-content img {
         max-width: 100%;
         height: auto;
         border-radius: 8px;
         margin: 1.5rem 0;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
-    .post-content blockquote {
+    .article-content blockquote {
         border-left: 4px solid var(--link-color);
         padding-left: 1rem;
         margin: 1.5rem 0;
         color: var(--text-secondary);
         font-style: italic;
+        background: var(--bg-secondary);
+        padding: 1rem 1rem 1rem 1.5rem;
+        border-radius: 0 4px 4px 0;
     }
 
-    .backlinks {
-        margin-top: 3rem;
+    .article-content code {
+        background: var(--code-bg);
+        padding: 0.2em 0.4em;
+        border-radius: 3px;
+        font-family: 'Fira Code', 'Monaco', 'Courier New', monospace;
+        font-size: 0.9em;
+    }
+
+    .article-content pre {
+        background: var(--code-bg);
+        padding: 1rem;
+        border-radius: 6px;
+        overflow-x: auto;
+        margin: 1.5rem 0;
+        border: 1px solid var(--border-color);
+    }
+
+    .article-content pre code {
+        background: none;
+        padding: 0;
+        font-size: 0.85rem;
+    }
+
+    /* 评论区样式 */
+    .comments-section {
+        margin-top: 4rem;
         padding-top: 2rem;
         border-top: 2px solid var(--border-color);
     }
 
-    .backlinks h3 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
+    .comments-section h3 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
         color: var(--text-primary);
     }
 
-    .backlinks-placeholder {
+    .giscus-container {
+        background: var(--bg-secondary);
+        padding: 1.5rem;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+    }
+
+    .comments-notice {
+        font-size: 0.85rem;
         color: var(--text-secondary);
-        font-style: italic;
+        background: var(--bg-primary);
+        padding: 1rem;
+        border-radius: 6px;
+        border-left: 4px solid var(--link-color);
+        margin-bottom: 1rem;
+        line-height: 1.6;
+    }
+
+    .comments-notice a {
+        color: var(--link-color);
+        font-weight: 600;
     }
 </style>
 {{ end }}

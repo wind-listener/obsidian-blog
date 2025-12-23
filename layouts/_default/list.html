@@ -1,8 +1,16 @@
 {{ define "title" }}{{ .Title }} - {{ .Site.Title }}{{ end }}
 
 {{ define "main" }}
-<div class="list-page">
-    <h1>{{ .Title }}</h1>
+<div class="section-page">
+    <div class="section-header">
+        <nav class="breadcrumb">
+            <a href="/">首页</a>
+            <span>/</span>
+            <span>{{ .Title }}</span>
+        </nav>
+        <h1>{{ .Title }}</h1>
+        <p class="section-desc">共 {{ len .Pages }} 篇文章</p>
+    </div>
 
     {{ if .Content }}
     <div class="page-content">
@@ -10,22 +18,22 @@
     </div>
     {{ end }}
 
-    <div class="posts-list">
+    <div class="posts-grid">
         {{ range .Pages }}
-        <article class="post-item">
+        <article class="post-card">
             <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
             <div class="post-meta">
-                <time>{{ .Date.Format ($.Site.Params.dateFormat | default "2006-01-02") }}</time>
+                <time>{{ .Date.Format "2006-01-02" }}</time>
                 {{ with .Params.tags }}
                 <span class="tags">
-                    {{ range . }}
-                    <a href="{{ "tags" | absURL }}/{{ . | urlize }}" class="tag">#{{ . }}</a>
+                    {{ range first 3 . }}
+                    <span class="tag">#{{ . }}</span>
                     {{ end }}
                 </span>
                 {{ end }}
             </div>
             {{ if .Summary }}
-            <p class="summary">{{ .Summary }}</p>
+            <p class="summary">{{ .Summary | truncate 120 }}</p>
             {{ end }}
         </article>
         {{ end }}
@@ -33,67 +41,128 @@
 </div>
 
 <style>
-    .list-page h1 {
-        font-size: 2.5rem;
-        margin-bottom: 2rem;
+    .section-page {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .section-header {
+        margin-bottom: 3rem;
+    }
+
+    .breadcrumb {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .breadcrumb a {
+        color: var(--link-color);
+        text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+        text-decoration: underline;
+    }
+
+    .section-header h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
         color: var(--text-primary);
+    }
+
+    .section-desc {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
     }
 
     .page-content {
         margin-bottom: 2rem;
         color: var(--text-secondary);
+        font-size: 0.9rem;
+        padding: 1rem;
+        background: var(--bg-secondary);
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
     }
 
-    .posts-list {
-        margin-top: 2rem;
+    .posts-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
     }
 
-    .post-item {
-        margin-bottom: 2.5rem;
-        padding-bottom: 2rem;
-        border-bottom: 1px solid var(--border-color);
+    @media (max-width: 768px) {
+        .posts-grid {
+            grid-template-columns: 1fr;
+        }
     }
 
-    .post-item:last-child {
-        border-bottom: none;
+    .post-card {
+        background: var(--bg-secondary);
+        padding: 1.5rem;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+        transition: all 0.2s ease;
     }
 
-    .post-item h2 {
-        font-size: 1.6rem;
-        margin-bottom: 0.5rem;
+    .post-card:hover {
+        border-color: var(--link-color);
+        transform: translateY(-3px);
+        box-shadow: var(--shadow);
     }
 
-    .post-item h2 a {
+    .post-card h2 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+        line-height: 1.4;
+    }
+
+    .post-card h2 a {
         text-decoration: none;
         color: var(--text-primary);
         transition: color 0.2s;
     }
 
-    .post-item h2 a:hover {
+    .post-card h2 a:hover {
         color: var(--link-color);
+        text-decoration: none;
     }
 
     .post-meta {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 0.75rem;
         color: var(--text-secondary);
-        font-size: 0.9rem;
         margin-bottom: 0.75rem;
+        flex-wrap: wrap;
     }
 
     .tags {
-        margin-left: 1rem;
+        display: flex;
+        gap: 0.4rem;
     }
 
     .tag {
-        margin-right: 0.5rem;
-        text-decoration: none;
+        background: var(--bg-primary);
+        padding: 0.15rem 0.5rem;
+        border-radius: 10px;
+        font-size: 0.7rem;
+        border: 1px solid var(--border-color);
         color: var(--link-color);
-        font-size: 0.85rem;
     }
 
     .summary {
         color: var(--text-secondary);
         line-height: 1.6;
         margin-top: 0.5rem;
+        font-size: 0.85rem;
     }
 </style>
 {{ end }}

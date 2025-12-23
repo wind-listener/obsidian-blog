@@ -1,0 +1,204 @@
+{
+  "main": {
+    "id": "c7092ca1be964f52",
+    "type": "split",
+    "children": [
+      {
+        "id": "27adcbfc1b56bf76",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b260dbedd5d48acd",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "64e7a4774a153ca6",
+    "type": "split",
+    "children": [
+      {
+        "id": "1f00768abc772200",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "90b608b0bf51ae71",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabeticalReverse"
+              }
+            }
+          },
+          {
+            "id": "12759b77377495f0",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#excalidraw",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "11226dbfed70bf17",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 240.5
+  },
+  "right": {
+    "id": "52ea411d65bae833",
+    "type": "split",
+    "children": [
+      {
+        "id": "6b0270645ada9741",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5f6c1b6eb048058c",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": true,
+                "extraContext": true,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": true,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "bff4098b648d632e",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "4c86363d9e782f22",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": false
+              }
+            }
+          },
+          {
+            "id": "c250c1b9b8c93003",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          },
+          {
+            "id": "268f97807c2172f3",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 294.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "publish:发布更改": false,
+      "workspaces:管理工作区布局": false,
+      "markdown-importer:打开 Markdown 格式转换器": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "obsidian-excalidraw-plugin:新建绘图文件": false
+    }
+  },
+  "active": "b260dbedd5d48acd",
+  "lastOpenFiles": [
+    "数据结构总览.md",
+    "Drawing 2024-04-16 16.01.57_0.excalidraw.md",
+    "总览.md",
+    "未命名 1.md",
+    "attachments/Pasted image 20240409112443.png",
+    "attachments",
+    "未命名",
+    "Pasted image 20240409112443.png.md",
+    "数据结构/数据结构/Welcome.md",
+    "数据结构/数据结构",
+    "编程艺术/如何处理输入输出 Python.md",
+    "笔试题以及题解/未命名.md",
+    "笔试题以及题解/判断序列的出栈合法性.md",
+    "笔试题以及题解/找出全部合法的出栈序列.md",
+    "笔试题以及题解/子集.md",
+    "算法/排序算法.md",
+    "Excalidraw/Drawing 2024-04-15 22.23.05.excalidraw.md",
+    "Excalidraw/Drawing 2024-04-15 23.57.02.excalidraw.md",
+    "Excalidraw/Drawing 2024-04-15 22.23.05.excalidraw.png",
+    "Excalidraw/未命名.md",
+    "Excalidraw",
+    "行测/图形推理.md",
+    "数据结构/图形推理.md",
+    "行测",
+    "Python高级/array.md",
+    "算法/未命名.md",
+    "算法/浅拷贝与深拷贝.md",
+    "算法/最长递增子序列.md",
+    "基于视频内容理解的事故溯源.md",
+    "attachments/Pasted image 20240410215121.png",
+    "算法/KMP算法：字符串匹配.md",
+    "数据结构/未命名.md",
+    "数据结构/哈夫曼树.md",
+    "数据结构/最小代价生成树.md",
+    "计算机网络",
+    "笔试题以及题解",
+    "算法/attachments/Pasted image 20240410130957.png",
+    "数据结构",
+    "算法/attachments/Pasted image 20240409185327.png",
+    "未命名.canvas",
+    "算法/attachments/Pasted image 20240409184811.png",
+    "编程艺术",
+    "我的模板",
+    "算法/attachments/Pasted image 20240409112443.png",
+    "算法/attachments/Pasted image 20240402161953.png",
+    "算法/attachments/Pasted image 20240402161852.png",
+    "Diary/attachments/Pasted image 20240401235618.png"
+  ]
+}

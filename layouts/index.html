@@ -1,64 +1,227 @@
-{{ define "title" }}{{ .Site.Title }} - {{ .Site.Params.description }}{{ end }}
+{{ define "title" }}{{ .Site.Title }}{{ end }}
 
 {{ define "main" }}
 <div class="home">
-    <h1>欢迎来到我的数字花园 🌱</h1>
-    <p class="intro">{{ .Site.Params.description }}</p>
+    <div class="hero">
+        <h1>{{ .Site.Title }}</h1>
+        <p class="subtitle">{{ .Site.Params.description }}</p>
+    </div>
 
-    <section class="recent-posts">
-        <h2>最新文章</h2>
-        {{ range first 10 (where .Site.RegularPages "Section" "posts") }}
-        <article class="post-item">
-            <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-            <div class="post-meta">
-                <time>{{ .Date.Format (.Site.Params.dateFormat | default "2006-01-02") }}</time>
-                {{ with .Params.tags }}
-                <span class="tags">
-                    {{ range . }}
-                    <a href="{{ "tags" | absURL }}/{{ . | urlize }}" class="tag">#{{ . }}</a>
-                    {{ end }}
-                </span>
-                {{ end }}
-            </div>
-            {{ if .Summary }}
-            <p class="summary">{{ .Summary }}</p>
+    <div class="categories-grid">
+        {{ $sections := slice
+            "01 电子信息与计算机专业"
+            "02 Artificial Intelligence"
+            "03 Mathematics"
+            "04 健康管理"
+            "05 厨艺"
+            "06 工具使用经验和技巧"
+            "07 现代社会生存指南"
+            "08 哲学"
+            "09 心理学"
+            "10 经济学"
+            "11 语言学"
+            "12 管理学：行政、招聘和方法论"
+        }}
+
+        {{ $icons := slice "💻" "🤖" "📐" "🏃" "🍳" "🔧" "🌍" "🧠" "🎭" "💰" "🗣️" "📊" }}
+
+        {{ range $index, $section := $sections }}
+            {{ $sectionPath := . }}
+            {{ $sectionPage := $.Site.GetPage (printf "/%s" $sectionPath) }}
+            {{ $count := 0 }}
+            {{ if $sectionPage }}
+                {{ $count = len $sectionPage.RegularPages }}
             {{ end }}
-        </article>
+
+            <a href="/{{ $sectionPath | urlize }}/" class="category-card">
+                <div class="card-icon">{{ index $icons $index }}</div>
+                <h3 class="card-title">{{ $section }}</h3>
+                <div class="card-meta">
+                    <span class="post-count">{{ $count }} 篇文章</span>
+                </div>
+            </a>
         {{ end }}
-    </section>
+    </div>
+
+    <div class="recent-section">
+        <h2>最近更新</h2>
+        <div class="recent-posts">
+            {{ range first 6 .Site.RegularPages }}
+            <article class="post-item">
+                <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+                <div class="post-meta">
+                    <time>{{ .Date.Format "2006-01-02" }}</time>
+                    <span class="section-name">{{ .Section }}</span>
+                </div>
+            </article>
+            {{ end }}
+        </div>
+    </div>
 </div>
 
 <style>
-    .home h1 {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        color: var(--text-primary);
+    .home {
+        max-width: 1400px;
+        margin: 0 auto;
     }
 
-    .intro {
-        font-size: 1.2rem;
-        color: var(--text-secondary);
+    .hero {
+        text-align: center;
+        padding: 3rem 0 2rem;
+        border-bottom: 1px solid var(--border-color);
         margin-bottom: 3rem;
     }
 
-    .recent-posts h2 {
-        font-size: 1.8rem;
+    .hero h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+        color: var(--text-secondary);
+        font-weight: 300;
+    }
+
+    .categories-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        margin-bottom: 4rem;
+    }
+
+    @media (max-width: 1200px) {
+        .categories-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .categories-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 480px) {
+        .categories-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .category-card {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 2rem 1.5rem;
+        text-decoration: none;
+        color: var(--text-primary);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .category-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .category-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--link-color);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .category-card:hover::before {
+        opacity: 1;
+    }
+
+    .card-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    .card-title {
+        font-size: 0.95rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+        position: relative;
+        z-index: 1;
+        line-height: 1.4;
+    }
+
+    .card-meta {
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+        position: relative;
+        z-index: 1;
+    }
+
+    .post-count {
+        background: var(--bg-primary);
+        padding: 0.25rem 0.75rem;
+        border-radius: 12px;
+        border: 1px solid var(--border-color);
+    }
+
+    .recent-section {
+        margin-top: 4rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .recent-section h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
         margin-bottom: 1.5rem;
         color: var(--text-primary);
     }
 
-    .post-item {
-        margin-bottom: 2rem;
-        padding-bottom: 2rem;
-        border-bottom: 1px solid var(--border-color);
+    .recent-posts {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
     }
 
-    .post-item:last-child {
-        border-bottom: none;
+    @media (max-width: 768px) {
+        .recent-posts {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .post-item {
+        background: var(--bg-secondary);
+        padding: 1.5rem;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+        transition: all 0.2s ease;
+    }
+
+    .post-item:hover {
+        border-color: var(--link-color);
+        transform: translateX(5px);
     }
 
     .post-item h3 {
-        font-size: 1.4rem;
+        font-size: 1rem;
+        font-weight: 500;
         margin-bottom: 0.5rem;
     }
 
@@ -72,25 +235,17 @@
     }
 
     .post-meta {
+        display: flex;
+        gap: 1rem;
+        font-size: 0.75rem;
         color: var(--text-secondary);
-        font-size: 0.9rem;
-        margin-bottom: 0.5rem;
     }
 
-    .tags {
-        margin-left: 1rem;
-    }
-
-    .tag {
-        margin-right: 0.5rem;
-        text-decoration: none;
-        color: var(--link-color);
-        font-size: 0.85rem;
-    }
-
-    .summary {
-        color: var(--text-secondary);
-        line-height: 1.6;
+    .section-name {
+        background: var(--bg-primary);
+        padding: 0.125rem 0.5rem;
+        border-radius: 4px;
+        border: 1px solid var(--border-color);
     }
 </style>
 {{ end }}
