@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'
+baseURL = 'http://zzmblog.top/'
 languageCode = 'zh-CN'
 title = '我的 Obsidian 博客'
 theme = ''
@@ -13,8 +13,8 @@ theme = ''
   enableGraph = true
 
   [params.author]
-    name = "Your Name"
-    email = "your.email@example.com"
+    name = "Benjamin"
+    email = "zzm_ai@bupt.edu.cn"
 
 [taxonomies]
   tag = 'tags'
