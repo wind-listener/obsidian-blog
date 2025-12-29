@@ -1,3 +1,9 @@
+---
+title: "self-forcing"
+date: 2025-08-07
+draft: false
+---
+
 ### 研究问题
 本文针对自回归视频扩散模型（autoregressive video diffusion models）中存在的**训练-测试分布不匹配问题**（exposure bias）展开研究。具体表现为：
 1. **传统方法局限性**：现有方法（如Teacher Forcing和Diffusion Forcing）在训练时依赖真实帧或噪声帧作为上下文，但推理时需基于模型自身生成的误差累积帧，导致生成质量随时间退化。

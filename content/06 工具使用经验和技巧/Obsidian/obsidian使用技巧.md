@@ -1,3 +1,9 @@
+---
+title: "同步方式"
+date: 2025-08-22
+draft: false
+---
+
 [Obsidian Help](https://publish.obsidian.md/help-zh/%E7%94%B1%E6%AD%A4%E5%BC%80%E5%A7%8B)
 
 # 同步方式

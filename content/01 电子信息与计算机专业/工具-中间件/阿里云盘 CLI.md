@@ -1,3 +1,9 @@
+---
+title: "阿里云盘 CLI"
+date: 2025-10-14
+draft: false
+---
+
 [Aliyunpan GitHub](https://github.com/tickstep/aliyunpan/tree/main?tab=readme-ov-file#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8)
 
 

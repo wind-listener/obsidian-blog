@@ -1,3 +1,9 @@
+---
+title: "SIFT"
+date: 2025-08-31
+draft: false
+---
+
 SIFT（Scale-Invariant Feature Transform）是一种用于图像特征检测和匹配的算法，由 **David Lowe** 在 1999 年提出，并在 2004 年发表完整论文。它可以在 **不同尺度、旋转、光照变化的情况下保持稳定**，常用于目标检测、图像拼接、物体识别等任务。
 
 **SIFT 算法的 4 个主要步骤**

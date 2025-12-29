@@ -1,3 +1,9 @@
+---
+title: "toml"
+date: 2025-08-07
+draft: false
+---
+
 [[深入对比TOML，JSON和YAML]]
 
 TOML（Tom’s Obvious, Minimal Language）是一种简洁易读的配置文件格式，常用于项目配置文件（如 pyproject.toml）。它使用键值对、分层结构以及易读的语法，支持多种数据类型。

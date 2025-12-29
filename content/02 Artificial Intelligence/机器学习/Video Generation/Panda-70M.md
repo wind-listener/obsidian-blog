@@ -1,3 +1,9 @@
+---
+title: "Panda-70M"
+date: 2025-08-07
+draft: false
+---
+
 **Panda-70M: 多模态视频字幕数据集**
 论文 ： https://arxiv.org/abs/2402.19479
 Web ： https://snap-research.github.io/Panda-70M

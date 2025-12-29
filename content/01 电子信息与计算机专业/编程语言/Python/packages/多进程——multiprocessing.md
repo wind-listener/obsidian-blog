@@ -1,3 +1,9 @@
+---
+title: "多进程——multiprocessing"
+date: 2025-08-07
+draft: false
+---
+
 相关链接：
 https://docs.python.org/zh-cn/3/library/multiprocessing.html
 https://docs.python.org/3/library/multiprocessing.html

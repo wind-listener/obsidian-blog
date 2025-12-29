@@ -1,3 +1,9 @@
+---
+title: "InternVL"
+date: 2025-08-07
+draft: false
+---
+
 为了链接视觉模型和大语言模型，已有的Vision large language models (VLLMs)通常使用轻量化的”glue“ layers：
 - QFormer
 - linear projection

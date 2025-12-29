@@ -1,3 +1,9 @@
+---
+title: "EfficientSAM"
+date: 2025-08-07
+draft: false
+---
+
 ### EfficientSAM: 利用掩码图像预训练实现高效的Segment Anything模型
 
 #### 1. 引言

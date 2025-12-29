@@ -1,3 +1,9 @@
+---
+title: "Slurm"
+date: 2025-10-14
+draft: false
+---
+
 https://slurm.schedmd.com/overview.html
 
 

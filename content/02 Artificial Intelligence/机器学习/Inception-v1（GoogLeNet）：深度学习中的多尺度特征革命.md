@@ -1,3 +1,9 @@
+---
+title: "Inception-v1（GoogLeNet）：深度学习中的多尺度特征革命"
+date: 2025-08-07
+draft: false
+---
+
 #cnn 
 
 ## 引言

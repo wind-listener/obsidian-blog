@@ -1,3 +1,9 @@
+---
+title: "ConvNeXt 卷积神经网络的巅峰之作"
+date: 2025-08-07
+draft: false
+---
+
 https://github.com/facebookresearch/ConvNeXt
 [相关博客](https://blog.csdn.net/weixin_54546190/article/details/124948176)
 

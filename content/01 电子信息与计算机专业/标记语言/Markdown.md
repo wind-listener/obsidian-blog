@@ -1,3 +1,9 @@
+---
+title: "Markdown"
+date: 2025-08-12
+draft: false
+---
+
 
 
 以下是精简全面的 Markdown 语法指南，涵盖基础语法、多引擎差异及 Obsidian 独有语法，以表格形式直观对比：

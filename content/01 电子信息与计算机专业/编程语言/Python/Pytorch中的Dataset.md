@@ -1,3 +1,9 @@
+---
+title: "Pytorch中的Dataset"
+date: 2025-08-07
+draft: false
+---
+
 在 PyTorch 中，Dataset 和 IterableDataset 都是 torch.utils.data 中的数据集基类，但它们的工作方式不同，主要区别如下：
 
 ---

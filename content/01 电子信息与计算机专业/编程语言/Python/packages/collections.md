@@ -1,3 +1,9 @@
+---
+title: "collections"
+date: 2025-08-07
+draft: false
+---
+
 `collections.Counter` 是 Python 标准库 `collections` 中的一个类，用于计数可哈希对象。它是一个非常方便的数据结构，可以用来轻松统计元素的频率。
 
 以下是 `Counter` 类的一些常见用法和方法：

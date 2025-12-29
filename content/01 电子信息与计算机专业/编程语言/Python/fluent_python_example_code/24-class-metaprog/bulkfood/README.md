@@ -1,3 +1,9 @@
+---
+title: "Legacy Class Descriptor and Metaclass Examples"
+date: 2025-08-07
+draft: false
+---
+
 # Legacy Class Descriptor and Metaclass Examples
 
 Examples from _Fluent Python, First Edition_—Chapter 21, _Class Metaprogramming_,

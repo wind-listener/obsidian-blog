@@ -1,3 +1,9 @@
+---
+title: "KMP算法：字符串匹配"
+date: 2025-08-07
+draft: false
+---
+
 [最浅显易懂的 KMP 算法讲解_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1AY4y157yL/?spm_id_from=333.337.search-card.all.click&vd_source=7ef7dff4b509c161e6b86a796dbad2c5)
 
 KMP（Knuth-Morris-Pratt）算法是一种用于字符串搜索的高效算法，其核心思想是当在文本字符串中搜索一个词时，能够利用已经部分匹配的信息避免从头开始搜索，从而提高搜索效率。这是通过预处理模式字符串来实现的，预处理阶段生成一个部分匹配表（也称为前缀表或失败函数），该表被用来决定下一步的搜索位置。

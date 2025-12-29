@@ -1,3 +1,9 @@
+---
+title: "gitignore"
+date: 2025-08-18
+draft: false
+---
+
 gitignore文件可以定义git不要跟踪的文件或者路径。
 
 

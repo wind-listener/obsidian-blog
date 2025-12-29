@@ -1,3 +1,9 @@
+---
+title: "Comfy UI 使用教程"
+date: 2025-08-31
+draft: false
+---
+
 
 ## 学习资源
 - 视频教学 [【ComfyUI全球爆红，AI绘画进入“工作流时代”？做最好懂的Comfy UI入门教程：Stable Diffusion专业节点式界面新手教学】]( https://www.bilibili.com/video/BV1D7421N7xN/?share_source=copy_web&vd_source=bc768ece925f350d8d8d46d7f5ccddd1)

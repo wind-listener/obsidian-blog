@@ -1,3 +1,9 @@
+---
+title: "focal loss"
+date: 2025-08-07
+draft: false
+---
+
 Focal Loss 是一种为了解决类别不平衡问题而提出的损失函数，最早在《Focal Loss for Dense Object Detection》这篇论文中提出，主要应用于**目标检测**任务，尤其是在处理**类别不平衡**的情况下表现出色。==Focal Loss 对易分类样本施加较小的权重，增加难分类样本的权重，从而帮助模型专注于困难的样本，减轻简单样本的影响。==
 
 ## Focal Loss 的数学形式

@@ -1,3 +1,9 @@
+---
+title: "SAM2"
+date: 2025-08-07
+draft: false
+---
+
 
 ![[Pasted image 20250213134426 1.png]]
 文件主要介绍了 **Segment Anything Model 2 (SAM 2)**，一种面向图像和视频的可提示分割基础模型的改进版本。以下是摘要和关键内容：

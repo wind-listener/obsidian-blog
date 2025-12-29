@@ -1,3 +1,9 @@
+---
+title: "Diffusion Models学习入门"
+date: 2025-10-10
+draft: false
+---
+
 以下是为你整理的Diffusion Models（扩散模型）入门学习路线，侧重理论推导与工程实践的结合，内容涵盖从基础概念到前沿进展，并附有推荐资源。
 
 ## 📌 一、学习路线总览

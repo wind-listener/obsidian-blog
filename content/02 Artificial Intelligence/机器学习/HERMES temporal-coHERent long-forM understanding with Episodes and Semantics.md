@@ -1,3 +1,9 @@
+---
+title: "HERMES temporal-coHERent long-forM understanding with Episodes and Semantics"
+date: 2025-08-07
+draft: false
+---
+
 #视频分类 #文献阅读
 
 

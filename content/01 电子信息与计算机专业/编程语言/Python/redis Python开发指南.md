@@ -1,3 +1,9 @@
+---
+title: "redis Python开发指南"
+date: 2025-12-14
+draft: false
+---
+
 Redis 凭借其高性能和丰富的数据类型，在缓存、会话存储和消息队列等场景中应用广泛。通过 Python 的 `redis-py` 库，我们可以方便地操作 Redis。下面为你梳理关键要点和用法。
 
 ### 📦 安装与连接

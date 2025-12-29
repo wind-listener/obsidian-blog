@@ -1,3 +1,9 @@
+---
+title: "Python项目的构建和分发"
+date: 2025-08-07
+draft: false
+---
+
 运行 python -m build 的效果是**为 Python 项目生成分发包**，包括**源码分发包（Source Distribution,** .tar.gz**）和构建分发包（Wheel,** .whl**）**。这些分发包可用于将项目上传到 PyPI（Python Package Index）或分发给其他用户。
 
   

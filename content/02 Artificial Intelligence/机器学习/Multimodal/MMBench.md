@@ -1,3 +1,9 @@
+---
+title: "特点"
+date: 2025-08-07
+draft: false
+---
+
 https://mmbench.opencompass.org.cn/home
 
 https://github.com/open-compass/mmbench/

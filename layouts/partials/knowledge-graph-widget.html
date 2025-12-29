@@ -1,0 +1,305 @@
+{{ $currentPage := . }}
+{{ $currentTitle := .Title }}
+
+<!-- 收集反向链接和正向链接 -->
+{{ $backlinks := slice }}
+{{ $forwardlinks := slice }}
+
+<!-- 查找反向链接 (其他页面链接到当前页) -->
+{{ range .Site.RegularPages }}
+    {{ if ne .RelPermalink $currentPage.RelPermalink }}
+        {{ $content := .Plain }}
+        {{ if or (in $content (printf "[[%s]]" $currentTitle)) (in $content (printf "[[%s|" $currentTitle)) }}
+            {{ $backlinks = $backlinks | append . }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+<!-- 查找正向链接 (当前页链接到其他页) -->
+{{ $wikilinks := findRE `\[\[([^\]|]+)` .Plain }}
+{{ range $wikilinks }}
+    {{ $linkTitle := . | replaceRE `\[\[` "" }}
+    {{ range $.Site.RegularPages }}
+        {{ if and (eq .Title $linkTitle) (ne .RelPermalink $currentPage.RelPermalink) }}
+            {{ $forwardlinks = $forwardlinks | append . }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+{{ $hasLinks := or (gt (len $backlinks) 0) (gt (len $forwardlinks) 0) }}
+
+{{ if $hasLinks }}
+<aside class="knowledge-graph-widget">
+    <div class="widget-header">
+        <h3>🔗 关联页面</h3>
+        <button id="toggle-graph" class="toggle-btn" title="切换显示模式">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <circle cx="8" cy="4" r="2"/>
+                <circle cx="4" cy="12" r="2"/>
+                <circle cx="12" cy="12" r="2"/>
+                <line x1="7" y1="5.5" x2="5" y2="10.5" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="9" y1="5.5" x2="11" y2="10.5" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+        </button>
+    </div>
+
+    <div class="widget-content">
+        <!-- 图形视图 -->
+        <div id="mini-graph" class="graph-view active">
+            <svg id="graph-svg" width="100%" height="300"></svg>
+        </div>
+
+        <!-- 列表视图 -->
+        <div id="link-list" class="list-view">
+            {{ if gt (len $backlinks) 0 }}
+            <div class="link-section">
+                <h4>← 引用本页 ({{ len $backlinks }})</h4>
+                <ul>
+                    {{ range first 5 $backlinks }}
+                    <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+                    {{ end }}
+                </ul>
+            </div>
+            {{ end }}
+
+            {{ if gt (len $forwardlinks) 0 }}
+            <div class="link-section">
+                <h4>→ 本页引用 ({{ len $forwardlinks }})</h4>
+                <ul>
+                    {{ range first 5 $forwardlinks }}
+                    <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+                    {{ end }}
+                </ul>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</aside>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+(function() {
+    'use strict';
+
+    // 准备图谱数据
+    const nodes = [
+        { id: 'current', title: {{ $currentTitle | jsonify }}, type: 'current', url: {{ $currentPage.Permalink | jsonify }} }
+    ];
+    const links = [];
+
+    // 添加反向链接
+    {{ range $backlinks }}
+    nodes.push({
+        id: 'back-{{ .File.UniqueID }}',
+        title: {{ .Title | jsonify }},
+        type: 'backlink',
+        url: {{ .Permalink | jsonify }}
+    });
+    links.push({ source: 'back-{{ .File.UniqueID }}', target: 'current' });
+    {{ end }}
+
+    // 添加正向链接
+    {{ range $forwardlinks }}
+    nodes.push({
+        id: 'forward-{{ .File.UniqueID }}',
+        title: {{ .Title | jsonify }},
+        type: 'forwardlink',
+        url: {{ .Permalink | jsonify }}
+    });
+    links.push({ source: 'current', target: 'forward-{{ .File.UniqueID }}' });
+    {{ end }}
+
+    // 创建 D3 图谱
+    const width = 280;
+    const height = 300;
+
+    const svg = d3.select('#graph-svg')
+        .attr('viewBox', [0, 0, width, height]);
+
+    const simulation = d3.forceSimulation(nodes)
+        .force('link', d3.forceLink(links).id(d => d.id).distance(60))
+        .force('charge', d3.forceManyBody().strength(-200))
+        .force('center', d3.forceCenter(width / 2, height / 2))
+        .force('collision', d3.forceCollide().radius(25));
+
+    // 绘制连线
+    const link = svg.append('g')
+        .selectAll('line')
+        .data(links)
+        .join('line')
+        .attr('stroke', '#999')
+        .attr('stroke-opacity', 0.6)
+        .attr('stroke-width', 1.5);
+
+    // 绘制节点
+    const node = svg.append('g')
+        .selectAll('g')
+        .data(nodes)
+        .join('g')
+        .style('cursor', 'pointer')
+        .on('click', (event, d) => {
+            if (d.type !== 'current') window.location.href = d.url;
+        });
+
+    node.append('circle')
+        .attr('r', d => d.type === 'current' ? 10 : 6)
+        .attr('fill', d => {
+            if (d.type === 'current') return '#5568fe';
+            if (d.type === 'backlink') return '#4caf50';
+            return '#ff9800';
+        })
+        .attr('stroke', '#fff')
+        .attr('stroke-width', 2);
+
+    node.append('text')
+        .text(d => d.title.length > 10 ? d.title.substring(0, 10) + '...' : d.title)
+        .attr('x', 0)
+        .attr('y', d => d.type === 'current' ? -15 : -12)
+        .attr('text-anchor', 'middle')
+        .attr('font-size', d => d.type === 'current' ? '11px' : '9px')
+        .attr('fill', 'var(--text-primary)');
+
+    // 更新位置
+    simulation.on('tick', () => {
+        link
+            .attr('x1', d => d.source.x)
+            .attr('y1', d => d.source.y)
+            .attr('x2', d => d.target.x)
+            .attr('y2', d => d.target.y);
+
+        node.attr('transform', d => `translate(${d.x},${d.y})`);
+    });
+
+    // 视图切换
+    document.getElementById('toggle-graph')?.addEventListener('click', function() {
+        const graphView = document.getElementById('mini-graph');
+        const listView = document.getElementById('link-list');
+
+        if (graphView.classList.contains('active')) {
+            graphView.classList.remove('active');
+            listView.classList.add('active');
+        } else {
+            graphView.classList.add('active');
+            listView.classList.remove('active');
+        }
+    });
+})();
+</script>
+
+<style>
+.knowledge-graph-widget {
+    position: sticky;
+    top: 20px;
+    width: 300px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+}
+
+.widget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.widget-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+
+.toggle-btn {
+    background: none;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 0.25rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.toggle-btn:hover {
+    background: var(--bg-primary);
+    color: var(--link-color);
+    border-color: var(--link-color);
+}
+
+.widget-content {
+    position: relative;
+}
+
+.graph-view,
+.list-view {
+    display: none;
+}
+
+.graph-view.active,
+.list-view.active {
+    display: block;
+}
+
+#graph-svg {
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--bg-primary);
+}
+
+.link-section {
+    margin-bottom: 1.5rem;
+}
+
+.link-section:last-child {
+    margin-bottom: 0;
+}
+
+.link-section h4 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.link-section ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.link-section li {
+    margin: 0.25rem 0;
+}
+
+.link-section a {
+    display: block;
+    padding: 0.4rem 0.6rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+}
+
+.link-section a:hover {
+    background: var(--bg-primary);
+    color: var(--link-color);
+    border-left-color: var(--link-color);
+}
+
+@media (max-width: 1400px) {
+    .knowledge-graph-widget {
+        display: none;
+    }
+}
+</style>
+{{ end }}

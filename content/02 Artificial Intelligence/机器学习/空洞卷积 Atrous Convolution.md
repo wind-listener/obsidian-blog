@@ -1,3 +1,9 @@
+---
+title: "空洞卷积 Atrous Convolution"
+date: 2025-08-07
+draft: false
+---
+
 > **Atrous** 这个单词来源于法语中的 **à trous**，意思是 "**有洞的**" 或 "**带孔的**"。它描述了一种特殊的卷积形式，即在卷积核的采样点之间插入“孔洞”或间隔，以扩大感受野。
 
 https://blog.csdn.net/mrjkzhangma/article/details/104929302

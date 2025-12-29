@@ -1,3 +1,9 @@
+---
+title: "快慢编码策略（Slow-Fast Encoding Strategy）"
+date: 2025-08-07
+draft: false
+---
+
 快慢编码策略（Slow-Fast Encoding Strategy）是一种在视频理解任务中优化计算效率的视觉特征提取方法，其核心思想是通过**差异化处理不同时间分辨率的帧**，在减少计算量的同时保留关键时空信息。以下是该策略的详细解析：
 
 ---

@@ -1,3 +1,9 @@
+---
+title: "PyTorch TensorFlow内置计时​"
+date: 2025-09-12
+draft: false
+---
+
 
 深度学习框架的轻量级计时方法：
 关键是需要使用 torch.cuda.synchronize()  # 同步等待

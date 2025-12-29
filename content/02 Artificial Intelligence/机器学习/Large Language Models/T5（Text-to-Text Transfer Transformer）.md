@@ -1,3 +1,9 @@
+---
+title: "T5（Text-to-Text Transfer Transformer）"
+date: 2025-08-16
+draft: false
+---
+
 T5（Text-to-Text Transfer Transformer）是 Google Research 开发的一个通用文本生成和处理模型，首次提出于论文 [“Exploring the Limits of Transfer Learning with a Unified Text-to-Text Transformer”](https://arxiv.org/abs/1910.10683)。
 
 T5 模型通过统一的***文本到文本***框架处理各类NLP任务，其编码器（Encoder）是理解输入文本的核心组件。以下从输入到输出详细解析编码流程，包括矩阵变换原理及意义，结合技术细节分阶段说明：

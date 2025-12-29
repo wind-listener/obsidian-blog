@@ -1,3 +1,9 @@
+---
+title: "Race condition in orignal procs.py"
+date: 2025-08-07
+draft: false
+---
+
 # Race condition in orignal procs.py
 
 Thanks to reader Michael Albert who noticed the code I published during the Early Release had a race condition in `proc.py`.

@@ -1,3 +1,9 @@
+---
+title: "clash"
+date: 2025-08-07
+draft: false
+---
+
 clash 的内核是开源的
 但是实现的软件有很多版本：
 

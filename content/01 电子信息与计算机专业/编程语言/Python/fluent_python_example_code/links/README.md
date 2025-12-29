@@ -1,3 +1,9 @@
+---
+title: "Short links for URLs in the book"
+date: 2025-08-07
+draft: false
+---
+
 # Short links for URLs in the book
 
 ## Problem: link rot

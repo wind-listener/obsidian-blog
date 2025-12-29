@@ -1,3 +1,9 @@
+---
+title: "A Pythonic Object"
+date: 2025-08-07
+draft: false
+---
+
 # A Pythonic Object
 
 Sample code for Chapter 11 of _Fluent Python 2e_ by Luciano Ramalho (O'Reilly, 2020)

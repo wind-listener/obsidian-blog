@@ -1,3 +1,9 @@
+---
+title: "Simple Projection Layers 的定义与运算"
+date: 2025-08-07
+draft: false
+---
+
 # Simple Projection Layers 的定义与运算
 
 ## 基本定义

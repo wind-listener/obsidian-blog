@@ -1,3 +1,9 @@
+---
+title: "Pytorch 字符串表达式"
+date: 2025-10-29
+draft: false
+---
+
 在 PyTorch 中，可以通过字符串表达式（string expressions）来动态定义张量运算规则，这种方式在 `torch.einsum()`、`torch.compile()` 的 `dynamic` 选项等场景中特别有用。以下是详细总结：
 
 ---

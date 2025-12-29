@@ -1,3 +1,9 @@
+---
+title: "TResNet"
+date: 2025-08-07
+draft: false
+---
+
 **TResNet（Tightly-coupled Residual Network）[TResNet](https://github.com/Alibaba-MIIL/TResNet)**
 
   

@@ -1,3 +1,9 @@
+---
+title: "iTerm2：Mac上的终极终端神器"
+date: 2025-12-18
+draft: false
+---
+
 # iTerm2：Mac上的终极终端神器
 
 ## 一、基础入门

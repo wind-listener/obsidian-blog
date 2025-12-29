@@ -1,3 +1,9 @@
+---
+title: "CoTracker3"
+date: 2025-08-07
+draft: false
+---
+
 **CoTracker3: Simpler and Better Point Tracking by Pseudo-Labelling Real Videos**
 
   

@@ -1,3 +1,9 @@
+---
+title: "WireGuard：现代VPN架构的革命者"
+date: 2025-08-07
+draft: false
+---
+
 https://github.com/WireGuard/wireguard-go
 
 https://github.com/PinkD/corplink-rs/releases

@@ -1,3 +1,9 @@
+---
+title: "Markdown表格公式语法总结"
+date: 2025-09-12
+draft: false
+---
+
 # Markdown表格公式语法总结
 原文链接：[如何使用公式](https://github.com/tgrosinger/md-advanced-tables/blob/main/docs/formulas.md)
 

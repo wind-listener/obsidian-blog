@@ -1,3 +1,9 @@
+---
+title: "GCC详谈"
+date: 2025-08-07
+draft: false
+---
+
 GCC（GNU Compiler Collection）是一个功能强大、开放源代码的编译器套件。它最初由[[Richard Stallman 1]]为[[GNU]]项目开发，目前由GNU项目团队和社区维护。
 ### 主要特点
 

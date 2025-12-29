@@ -1,3 +1,9 @@
+---
+title: "Norvig's originals and updates"
+date: 2025-08-07
+draft: false
+---
+
 # Norvig's originals and updates
 
 This directory contains:

@@ -1,3 +1,9 @@
+---
+title: "The Python Data Model"
+date: 2025-08-07
+draft: false
+---
+
 # The Python Data Model
 
 Sample code for Chapter 1 of _Fluent Python 2e_ by Luciano Ramalho (O'Reilly, 2020)

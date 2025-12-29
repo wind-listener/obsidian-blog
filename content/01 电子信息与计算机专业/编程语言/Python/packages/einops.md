@@ -1,3 +1,9 @@
+---
+title: "einops"
+date: 2025-08-25
+draft: false
+---
+
 
 
 ### 什么是 Einops？

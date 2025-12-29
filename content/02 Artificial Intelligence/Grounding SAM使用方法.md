@@ -1,3 +1,9 @@
+---
+title: "Grounding SAM使用方法"
+date: 2025-10-29
+draft: false
+---
+
 ### Install without Docker
 
 [](https://github.com/IDEA-Research/Grounded-Segment-Anything?tab=readme-ov-file#install-without-docker)

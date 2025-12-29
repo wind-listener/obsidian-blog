@@ -1,3 +1,9 @@
+---
+title: "train 和 eval"
+date: 2025-08-07
+draft: false
+---
+
 在 PyTorch 中，model.train() 和 model.eval() 主要用于设置模型的 **训练模式** 和 **推理模式**，它们的作用如下：
 
   

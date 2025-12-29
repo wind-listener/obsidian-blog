@@ -1,3 +1,9 @@
+---
+title: "**简介**"
+date: 2025-10-31
+draft: false
+---
+
 # **简介**
 
 OpenCV（Open Source Computer Vision Library）是一个开源的计算机视觉和机器学习软件库。它由Gary Bradski于1999年发起，旨在为计算机视觉应用提供基础算法，帮助开发者快速开发各种视觉功能。OpenCV广泛应用于图像处理、物体识别、视频分析等领域，支持多种编程语言（如C++、Python、Java等）和操作系统（如Windows、Linux、macOS等）。[OpenCV 官网](https://opencv.org)

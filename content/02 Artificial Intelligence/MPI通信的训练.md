@@ -1,3 +1,9 @@
+---
+title: "MPI通信的训练"
+date: 2025-08-07
+draft: false
+---
+
 以下介绍基于MPI通信的多机多卡训练方式，并提供完整的Python代码模板。MPI（Message Passing Interface）是一种跨节点的分布式训练协议，通过消息传递实现设备间通信，适用于大规模集群环境。
 
 ---

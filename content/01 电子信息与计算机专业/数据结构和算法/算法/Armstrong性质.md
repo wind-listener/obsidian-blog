@@ -1,3 +1,9 @@
+---
+title: "Armstrong性质"
+date: 2025-08-07
+draft: false
+---
+
 Armstrong性质，通常用来描述一类特殊的数字，这类数字被称为阿姆斯特朗数（Armstrong number）或水仙花数（Narcissistic number）。一个n位的数如果等于其各位数字的n次幂之和，则该数称为阿姆斯特朗数。这个定义在不同位数的数字中都适用。
 
 ### 示例

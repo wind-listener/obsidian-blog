@@ -1,3 +1,9 @@
+---
+title: "SSM（Structured State Space Models，结构化状态空间模型）"
+date: 2025-08-07
+draft: false
+---
+
 **SSM（Structured State Space Models，结构化状态空间模型）** 是近年来在深度学习领域备受关注的一类模型，尤其是随着 **Mamba**（一种基于SSM的架构）的提出，其潜力被认为可能挑战甚至超越Transformer。SSM的核心优势在于**高效处理长序列数据**，并在计算效率和模型性能之间取得了显著平衡。以下是关于SSM潜力的深度分析：
 
 ---

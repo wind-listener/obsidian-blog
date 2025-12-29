@@ -1,3 +1,9 @@
+---
+title: "VAE"
+date: 2025-10-29
+draft: false
+---
+
 # VAE
 ![[Pasted image 20250812162001.png]]
 

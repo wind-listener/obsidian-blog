@@ -1,3 +1,9 @@
+---
+title: "Fréchet Inception Distance (FID)"
+date: 2025-08-07
+draft: false
+---
+
 
 在生成模型（如图像生成和视频生成）的研究与应用中，如何客观、准确地评估生成内容的质量是一个核心问题。Fréchet Inception Distance (FID) 和 Fréchet Video Distance (FVD) 是当前最广泛使用的两种评估指标，分别用于衡量生成图像和视频与真实数据分布的相似程度。本文将全面解析这两种指标的基本原理、计算方法、应用场景以及优缺点。
 

@@ -1,3 +1,9 @@
+---
+title: "QFormer：桥接视觉与语言的查询式Transformer"
+date: 2025-08-07
+draft: false
+---
+
 #QFormer 
 
 ## 什么是QFormer？

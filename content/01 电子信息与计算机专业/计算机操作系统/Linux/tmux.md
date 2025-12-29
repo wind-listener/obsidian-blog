@@ -1,3 +1,9 @@
+---
+title: "个人常用"
+date: 2025-09-06
+draft: false
+---
+
 
 #linux 
 

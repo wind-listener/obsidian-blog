@@ -1,3 +1,9 @@
+---
+title: "Diffusion模型 MOC"
+date: 2025-10-10
+draft: false
+---
+
 
 高质量博客/综述
 - [What are Diffusion Models?](https://lilianweng.github.io/posts/2021-07-11-diffusion-models/) 

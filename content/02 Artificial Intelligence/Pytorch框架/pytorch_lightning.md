@@ -1,3 +1,9 @@
+---
+title: "pytorch_lightning"
+date: 2025-09-12
+draft: false
+---
+
 
 `pl.LightningModule` 是 PyTorch Lightning 框架的核心类，用于封装深度学习模型的全部逻辑（包括结构定义、训练/验证/测试步骤、优化器配置等）。它继承自 `torch.nn.Module`，但通过标准化接口和自动化管理，显著简化了训练流程的工程代码。以下从设计目标、核心方法、优势及使用示例展开详解：
 

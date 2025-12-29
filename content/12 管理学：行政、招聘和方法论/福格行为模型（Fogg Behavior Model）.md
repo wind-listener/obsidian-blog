@@ -1,3 +1,9 @@
+---
+title: "福格行为模型（Fogg Behavior Model）"
+date: 2025-08-07
+draft: false
+---
+
 
 由斯坦福大学教授**B.J.福格（BJ Fogg）**提出，用于解释人类行为发生的核心条件。该模型认为，**行为（Behavior）的发生需要同时满足三个要素**：  
 1. **动机（Motivation）**  

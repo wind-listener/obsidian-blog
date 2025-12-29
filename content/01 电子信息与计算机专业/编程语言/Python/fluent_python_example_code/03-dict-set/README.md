@@ -1,3 +1,9 @@
+---
+title: "Dictionaries and Sets"
+date: 2025-08-07
+draft: false
+---
+
 # Dictionaries and Sets
 
 Sample code for Chapter 3 of _Fluent Python 2e_ by Luciano Ramalho (O'Reilly, 2020)

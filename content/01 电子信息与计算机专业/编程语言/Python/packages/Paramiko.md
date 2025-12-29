@@ -1,3 +1,9 @@
+---
+title: "Paramiko"
+date: 2025-08-07
+draft: false
+---
+
 要在 **VSCode 连接服务器** 并读取 `infer_result/20250407_113748/VideoClassifier_pious-sweep-1_epoch23_acc0.7581--classifiers_test_all_mp4--_infer_result--bad.csv` 文件，提取 **第一个文件路径**（如 `/workspace/ckpt_downstream/zzm/mydataset/classifiers_test/bili_vdata_20250122_horizontal_0353_00002/2230ca17b0caabecc05884be35d51077.mp4`），然后 **下载到本地**，可以使用 **Python + Paramiko（SSH）** 或 **VSCode Remote SSH** 扩展来实现。
 
 ---

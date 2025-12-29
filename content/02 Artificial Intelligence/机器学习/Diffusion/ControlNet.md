@@ -1,3 +1,9 @@
+---
+title: "ControlNet：精准控制AI图像生成的革命性框架"
+date: 2025-09-06
+draft: false
+---
+
 # ControlNet：精准控制AI图像生成的革命性框架
 
 > 本文将深入探讨ControlNet的核心原理、技术实现与应用场景，带你全面了解这一让AI绘画从"随机创作"迈向"精准设计"的关键技术。

@@ -1,3 +1,9 @@
+---
+title: "手动编译安装torchaudio"
+date: 2025-10-17
+draft: false
+---
+
 一般而言，torchaudio必须和torch版本匹配，但有的时候环境里的torch版本应该是前辈编译的一个最合适的结果，轻易不要改变。要使用torchaudio的话，只能自己手动编译安装了。
 
 ## 编译前准备

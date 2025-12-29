@@ -1,3 +1,9 @@
+---
+title: "总结"
+date: 2025-09-12
+draft: false
+---
+
 # 总结
 
 ## Math

@@ -1,3 +1,9 @@
+---
+title: "Source of the originals"
+date: 2025-08-07
+draft: false
+---
+
 
 # Source of the originals
 

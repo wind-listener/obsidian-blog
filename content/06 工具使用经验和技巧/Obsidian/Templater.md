@@ -1,3 +1,9 @@
+---
+title: "学习资源"
+date: 2025-08-13
+draft: false
+---
+
 # 学习资源
 1. 视频 [B站教学](https://www.bilibili.com/video/BV1c64y1W7c2/?spm_id_from=333.337.search-card.all.click&vd_source=7ef7dff4b509c161e6b86a796dbad2c5)
 2. Documents [官方文档](https://silentvoid13.github.io/Templater/internal-functions/internal-modules/file-module.html#tpfilecursororder-number)

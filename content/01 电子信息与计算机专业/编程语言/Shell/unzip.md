@@ -1,3 +1,9 @@
+---
+title: "unzip"
+date: 2025-10-17
+draft: false
+---
+
 在 Linux/Unix 系统中，解压 ZIP 格式的压缩包通常使用 `unzip` 命令。它支持解压 `.zip` 文件，还能查看压缩包内容、测试完整性等。以下是其详细用法：
 
 

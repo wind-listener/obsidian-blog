@@ -1,3 +1,9 @@
+---
+title: "SAM"
+date: 2025-08-07
+draft: false
+---
+
 LLM的成功显示了基座大模型的强大泛用能力，只需要少量的prompt engineering即可实现媲美于fine-tune得到的模型，在zero-shot的任务上具有良好甚至SOTA的表现。
 
 在CV领域能否复刻大模型的成功？

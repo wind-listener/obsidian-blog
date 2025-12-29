@@ -1,3 +1,9 @@
+---
+title: "pathlib.Path"
+date: 2025-08-07
+draft: false
+---
+
 
 pathlib.Path 是 Python 中用于处理文件路径的强大工具，提供了很多方便的方法来操作文件和目录。以下是一些常用的 Path 方法：
 

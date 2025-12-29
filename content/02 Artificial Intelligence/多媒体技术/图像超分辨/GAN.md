@@ -1,3 +1,9 @@
+---
+title: "GAN"
+date: 2025-08-31
+draft: false
+---
+
 ### GAN网络（生成对抗网络）原理
 
 生成对抗网络（GAN）是深度学习中的一种架构，由两部分组成：生成器（Generator）和判别器（Discriminator）。

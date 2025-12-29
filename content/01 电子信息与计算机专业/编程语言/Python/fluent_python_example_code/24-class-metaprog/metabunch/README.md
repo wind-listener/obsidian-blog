@@ -1,3 +1,9 @@
+---
+title: "Examples from Python in a Nutshell, 3rd edition"
+date: 2025-08-07
+draft: false
+---
+
 # Examples from Python in a Nutshell, 3rd edition
 
 The metaclass `MetaBunch` example in `original/bunch.py` is an exact copy of the

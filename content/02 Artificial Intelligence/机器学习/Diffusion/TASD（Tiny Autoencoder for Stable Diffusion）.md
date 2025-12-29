@@ -1,3 +1,9 @@
+---
+title: "TASD（Tiny Autoencoder for Stable Diffusion）"
+date: 2025-08-29
+draft: false
+---
+
 #read
 https://github.com/madebyollin/taesd
 

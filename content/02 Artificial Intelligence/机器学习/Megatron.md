@@ -1,3 +1,9 @@
+---
+title: "Megatron"
+date: 2025-08-07
+draft: false
+---
+
 [**GitHub** - NVIDIA/**Megatron**-LM: Ongoing …](https://github.com/NVIDIA/Megatron-LM)
 
 **Megatron：大规模深度学习模型的训练框架**

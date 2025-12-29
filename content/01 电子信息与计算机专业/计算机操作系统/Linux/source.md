@@ -1,3 +1,9 @@
+---
+title: "Source 指令与 Linux $PATH 环境变量 完整总结"
+date: 2025-12-14
+draft: false
+---
+
 # Source 指令与 Linux $PATH 环境变量 完整总结
 ## 一、Source 指令（`.` 指令）
 ### 1. 核心定义

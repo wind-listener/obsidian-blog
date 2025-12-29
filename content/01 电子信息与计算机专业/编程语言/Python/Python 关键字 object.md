@@ -1,3 +1,9 @@
+---
+title: "Python 关键字 object"
+date: 2025-10-29
+draft: false
+---
+
 
 在 Python 中，`object` 是一个**基础类**（base class），它是所有类的终极父类。以下是关于 `object` 关键字的详细介绍：
 

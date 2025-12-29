@@ -1,3 +1,9 @@
+---
+title: "旋转位置编码（Rotary Position Embedding, RoPE）"
+date: 2025-10-29
+draft: false
+---
+
 旋转位置编码（Rotary Position Embedding, RoPE）是一种通过**旋转矩阵将位置信息融入词向量**的方法，其核心在于利用几何旋转操作使注意力分数自然携带相对位置信息。以下是其技术细节的完整解析：
 
 ---

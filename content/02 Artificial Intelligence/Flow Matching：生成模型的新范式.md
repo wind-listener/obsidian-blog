@@ -1,3 +1,9 @@
+---
+title: "Flow Matching：生成模型的新范式"
+date: 2025-08-07
+draft: false
+---
+
 # Flow Matching：生成模型的新范式
 
 > 从噪声分布到目标数据分布的平滑转换路径

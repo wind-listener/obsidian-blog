@@ -1,3 +1,9 @@
+---
+title: "学习使用dataview"
+date: 2025-08-13
+draft: false
+---
+
 中文文档：[Dataview 基本语法学习指南](https://pkmer.cn/Pkmer-Docs/10-obsidian/obsidian%E7%A4%BE%E5%8C%BA%E6%8F%92%E4%BB%B6/dataview/dataview%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/dataview%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/)
 Github：[obsidian-dataview](https://github.com/blacksmithgu/obsidian-dataview)
 

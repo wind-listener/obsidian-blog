@@ -1,3 +1,9 @@
+---
+title: "Diffusion和Transformer结合"
+date: 2025-10-29
+draft: false
+---
+
 扩散模型与Transformer的结合主要通过两种方式实现：**完全替换主干网络**或**在原有架构中引入Transformer模块**。以下从结合机制、训练流程、推理优化三个方面展开详细说明：
 
 ### 一、结合机制：Transformer如何融入扩散模型

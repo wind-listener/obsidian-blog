@@ -1,3 +1,9 @@
+---
+title: "在一个batch内网络参数是如何优化的？"
+date: 2025-08-07
+draft: false
+---
+
 在 **一个 batch 内，网络参数的优化过程** 主要涉及 **前向传播（Forward Pass）、损失计算（Loss Computation）、反向传播（Backward Pass）和参数更新（Parameter Update）**，具体流程如下：
 
 ---

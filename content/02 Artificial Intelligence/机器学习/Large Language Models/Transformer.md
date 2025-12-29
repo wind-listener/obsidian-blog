@@ -1,3 +1,9 @@
+---
+title: "Transformer"
+date: 2025-09-12
+draft: false
+---
+
 
 
 ![[Pasted image 20240607182037.png]]

@@ -1,3 +1,9 @@
+---
+title: "vscode Python代码解析"
+date: 2025-08-09
+draft: false
+---
+
 从报错信息来看，这是一个 **JavaScript 堆内存不足** 的问题。VSCode 服务器端运行的 Node.js 进程由于需要处理大量数据，导致超出了默认的内存限制。
 
   

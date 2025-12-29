@@ -1,3 +1,9 @@
+---
+title: "XGBoost：极致优化的梯度提升框架解析"
+date: 2025-08-07
+draft: false
+---
+
 #xgb 
 
 https://zhuanlan.zhihu.com/p/162001079

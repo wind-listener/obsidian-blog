@@ -1,3 +1,9 @@
+---
+title: "Pearson相关系数"
+date: 2025-08-07
+draft: false
+---
+
 #相关性
 
 

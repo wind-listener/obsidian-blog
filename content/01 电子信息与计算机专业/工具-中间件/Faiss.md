@@ -1,3 +1,9 @@
+---
+title: "Faiss"
+date: 2025-10-14
+draft: false
+---
+
 https://github.com/facebookresearch/faiss
 
 Faiss（Facebook AI Similarity Search）是Facebook开发的一个高效相似度搜索和聚类库，特别适用于在海量向量数据中进行快速的相似性搜索。它利用优化的数据结构和算法，尤其在处理数百万到数十亿的向量时表现优异。Faiss 的主要特点和用途包括：

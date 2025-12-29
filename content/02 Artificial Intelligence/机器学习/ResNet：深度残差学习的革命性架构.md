@@ -1,3 +1,9 @@
+---
+title: "ResNet：深度残差学习的革命性架构"
+date: 2025-08-07
+draft: false
+---
+
 
 ## 定义
 **残差网络（Residual Network, ResNet）**是由微软研究院提出的深度卷积神经网络架构，其核心创新在于**残差学习（Residual Learning）**机制。通过引入**跳跃连接（Skip Connection）**，解决了深度神经网络中的梯度消失/爆炸问题，使得网络深度可以显著增加（超过1000层）。数学表达为：

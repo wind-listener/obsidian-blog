@@ -1,3 +1,9 @@
+---
+title: "Fluent Python 2e example code"
+date: 2025-08-07
+draft: false
+---
+
 # Fluent Python 2e example code
 
 Example code for the book **Fluent Python, Second Edition** by Luciano Ramalho (O'Reilly, 2022).

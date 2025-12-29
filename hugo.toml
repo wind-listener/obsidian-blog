@@ -1,7 +1,14 @@
-baseURL = 'http://zzmblog.top/'
+baseURL = 'https://zzmblog.top/'
 languageCode = 'zh-CN'
-title = '我的 Obsidian 博客'
+title = '张芷铭的个人博客'
 theme = ''
+
+# Exclude certain directories from build
+excludeFiles = [
+  'fluent_python_example_code/**',
+  '**/*.adoc',
+  '**/*.asciidoc',
+]
 
 [params]
   description = "基于 Hugo 和 Obsidian 的个人博客"
@@ -24,6 +31,17 @@ theme = ''
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true  # 允许 HTML
+    [markup.goldmark.parser]
+      [markup.goldmark.parser.attribute]
+        block = true
+        heading = true
+        title = true
+  [markup.asciidocExt]
+    enabled = false
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+    ordered = false
   [markup.highlight]
     style = 'monokai'
     lineNos = true
@@ -39,25 +57,21 @@ theme = ''
     url = "/"
     weight = 1
   [[menu.main]]
-    name = "文章"
-    url = "/posts/"
-    weight = 2
-  [[menu.main]]
     name = "标签"
     url = "/tags/"
-    weight = 3
+    weight = 2
   [[menu.main]]
     name = "分类"
     url = "/categories/"
-    weight = 4
+    weight = 3
   [[menu.main]]
     name = "搜索"
     url = "/search/"
-    weight = 5
+    weight = 4
   [[menu.main]]
     name = "知识图谱"
     url = "/graph/"
-    weight = 6
+    weight = 5
 
 [security]
   [security.exec]

@@ -1,3 +1,9 @@
+---
+title: "Kendall系数：衡量等级相关性的稳健指标"
+date: 2025-10-30
+draft: false
+---
+
 # Kendall系数：衡量等级相关性的稳健指标
 
 在统计学和机器学习中，衡量变量之间的相关性是一个基础而重要的任务。除了常见的Pearson相关系数，Kendall秩相关系数（Kendall's rank correlation coefficient）作为一种非参数的相关性测量方法，因其对异常值的稳健性和对等级关系的内在敏感性而备受青睐。

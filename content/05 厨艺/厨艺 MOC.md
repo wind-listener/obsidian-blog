@@ -1,3 +1,9 @@
+---
+title: "厨艺 MOC"
+date: 2025-08-13
+draft: false
+---
+
 可能，做饭真的是我一种天生的爱好。
 
 ```dataview

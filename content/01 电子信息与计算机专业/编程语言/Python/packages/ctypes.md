@@ -1,3 +1,9 @@
+---
+title: "ctypes"
+date: 2025-10-17
+draft: false
+---
+
 ctypes 是 Python 标准库中的一个强大工具，它作为一个**外部函数库（Foreign Function Library，FFI）**，允许 Python 代码直接调用由 C 语言编写的动态链接库（在 Windows 上为 DLL 文件，在 Linux/macOS 上为 .so 或 .dylib 文件）中的函数。这使得 Python 能够与底层系统交互、重用现有的 C 代码库或调用操作系统 API，从而突破 Python 在性能或系统级编程方面的某些限制。
 
 下面是一个简要的目录，帮助你快速了解 ctypes 的核心内容：

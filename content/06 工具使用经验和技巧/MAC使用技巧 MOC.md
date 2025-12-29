@@ -1,3 +1,9 @@
+---
+title: "开荒"
+date: 2025-09-12
+draft: false
+---
+
 # 开荒
 [打造一个高效的开发终端](https://www.wolai.com/sfcmn/mrRyfnMg5YbNWE4HC5wRjo)
 常用软件：阿里云盘 mac_install.zip

@@ -1,3 +1,9 @@
+---
+title: "深度理解是如何达成的？——基于CLT认知负荷理论的系统性学习法"
+date: 2025-08-07
+draft: false
+---
+
 
 [我这辈子见过最好的_学习_方法 | CLT认知负荷理论 | 汤质看本质](https://www.bilibili.com/video/BV1rH4y1J7EK/)
 

@@ -1,3 +1,9 @@
+---
+title: "Mojifinder: Unicode character search examples"
+date: 2025-08-07
+draft: false
+---
+
 # Mojifinder: Unicode character search examples
 
 Examples from _Fluent Python, Second Edition_—Chapter 22, _Asynchronous Programming_.

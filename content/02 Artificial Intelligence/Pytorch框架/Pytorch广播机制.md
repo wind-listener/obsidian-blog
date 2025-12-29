@@ -1,3 +1,9 @@
+---
+title: "PyTorch广播机制深度解析：从原理到高效实践"
+date: 2025-10-29
+draft: false
+---
+
 
 # PyTorch广播机制深度解析：从原理到高效实践
 

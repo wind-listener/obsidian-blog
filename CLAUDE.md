@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Project Overview
 
 This is an **Obsidian + Hugo static blog** that transforms Obsidian vault content into a static website. The key architectural principle is that content lives in `content/` as standard Markdown files that can be edited in Obsidian, and Hugo transforms them into a static site in `public/`.
-
+服务器硬件资源 2CPU 2GB
 **Critical Path**: `content/*.md` → Hugo build → `public/` → Nginx serves static files
 
 ## Build and Deployment Commands

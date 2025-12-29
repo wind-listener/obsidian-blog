@@ -1,3 +1,9 @@
+---
+title: "Exclidraw快捷键"
+date: 2025-08-09
+draft: false
+---
+
 #shortcut
 
 主要是`R`、`A`、`T`、`E`、`V`，还有手动调整时利用`Alt`防止箭头调整歪了。

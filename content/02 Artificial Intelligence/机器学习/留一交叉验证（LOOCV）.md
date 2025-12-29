@@ -1,3 +1,9 @@
+---
+title: "LOOCV 的步骤"
+date: 2025-08-07
+draft: false
+---
+
 #机器学习 
 
 > **留一交叉验证（LOOCV, Leave-One-Out Cross Validation）** 是 **K 折交叉验证（K-Fold Cross Validation）** 的一种极端情况，其中 **K 等于样本总数 N**。它适用于 **数据量非常小** 的情况，能够最大程度地利用数据进行训练。

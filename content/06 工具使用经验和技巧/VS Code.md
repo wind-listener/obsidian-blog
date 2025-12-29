@@ -1,3 +1,9 @@
+---
+title: "清理ssh host 缓存"
+date: 2025-11-18
+draft: false
+---
+
 # 清理ssh host 缓存
 
 

@@ -1,3 +1,9 @@
+---
+title: "Quartz：适用于Obsidian的静态网站生成器"
+date: 2025-11-18
+draft: false
+---
+
 你提到的“Quartz”需要先明确：在与 Obsidian 结合生成网页的场景中，这里的 **Quartz** 指的是由开发者 jackyzha0 开发的**静态网站生成器（Static Site Generator）**，专为 Obsidian 笔记设计，而非 Java 领域的任务调度框架 Quartz Scheduler。以下详细介绍这个静态网站生成器的核心特性、用法，以及如何用它将 Obsidian 笔记转化为网页。
 
 官方wiki： https://quartz.jzhao.xyz/

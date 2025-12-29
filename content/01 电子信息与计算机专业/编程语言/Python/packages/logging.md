@@ -1,3 +1,9 @@
+---
+title: "logging"
+date: 2025-08-07
+draft: false
+---
+
 `logging` 是 Python 标准库中的一个模块，用于记录和管理应用程序的日志信息。相较于直接使用 `print`，`logging` 模块提供了更灵活、更强大的日志记录功能，能够控制日志的输出格式、级别、目标位置（如文件、控制台），以及自动处理日志文件轮换等操作。
 相关链接：
 [官方文档](https://docs.python.org/3/howto/logging.html#logging-basic-tutorial)

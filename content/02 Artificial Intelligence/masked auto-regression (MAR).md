@@ -1,3 +1,9 @@
+---
+title: "masked auto-regression (MAR)"
+date: 2025-08-07
+draft: false
+---
+
 ## 深入解析 Masked Auto-Regression (MAR)：从时间序列到表格填补的革命性方法  
 
 Masked Auto-Regression (MAR) 是近年来在时间序列分析与深度学习交叉领域兴起的关键技术。它通过**掩码机制**控制信息流，实现对复杂依赖关系的建模。本文将从定义、原理、应用场景到最新进展，全方位解析 MAR 的核心思想。  

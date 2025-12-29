@@ -1,3 +1,9 @@
+---
+title: "MCP 协议"
+date: 2025-12-22
+draft: false
+---
+
 相关链接:
 [模型上下文协议 - 维基百科，自由的百科全书](https://zh.wikipedia.org/zh-cn/%E6%A8%A1%E5%9E%8B%E4%B8%8A%E4%B8%8B%E6%96%87%E5%8D%8F%E8%AE%AE "模型上下文协议 - 维基百科，自由的百科全书")
 [MCP官网](https://modelcontextprotocol.info/zh-cn/)

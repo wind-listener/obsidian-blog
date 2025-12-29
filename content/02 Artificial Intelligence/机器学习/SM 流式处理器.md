@@ -1,3 +1,9 @@
+---
+title: "SM 流式处理器"
+date: 2025-12-14
+draft: false
+---
+
 ### 流式多处理器（SM）：GPU的核心计算单元
 流式多处理器（Streaming Multiprocessor，SM）是NVIDIA GPU架构中**最核心的并行计算单元**，也是GPU实现大规模并行计算的基础——所有CUDA核心（CUDA Core）、张量核心（Tensor Core）等计算资源都依附于SM，GPU的并行计算能力本质上是多个SM同时工作的结果。
 

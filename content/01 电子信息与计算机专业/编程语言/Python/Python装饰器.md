@@ -1,3 +1,9 @@
+---
+title: "Python装饰器"
+date: 2025-10-26
+draft: false
+---
+
 
 
 这样写装饰器无法使用？

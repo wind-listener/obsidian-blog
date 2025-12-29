@@ -1,3 +1,9 @@
+---
+title: "GoEX (Gorilla Execution Engine)"
+date: 2025-08-07
+draft: false
+---
+
 ### 论文总结和分析
 
 论文标题：**"GOEX: PERSPECTIVES AND DESIGNS TOWARDS A RUNTIME FOR AUTONOMOUS LLM APPLICATIONS"**

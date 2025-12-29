@@ -1,3 +1,9 @@
+---
+title: "JAX"
+date: 2025-08-07
+draft: false
+---
+
 [官网](https://jax.readthedocs.io/en/latest/)
 **JAX 简介**
 

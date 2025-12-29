@@ -1,3 +1,9 @@
+---
+title: "Shell编程：从命令行到自动化艺术"
+date: 2025-08-07
+draft: false
+---
+
 #shell
 
 

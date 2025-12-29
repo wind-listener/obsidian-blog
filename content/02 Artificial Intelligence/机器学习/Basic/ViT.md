@@ -1,3 +1,9 @@
+---
+title: "ViT"
+date: 2025-08-07
+draft: false
+---
+
 **ViT（Vision Transformer）是一种基于Transformer**架构的视觉模型，首次提出时，它展示了Transformer在视觉任务中的潜力。传统上，**卷积神经网络（CNN）**是计算机视觉领域的主流架构，但ViT的出现改变了这一局面，尤其在一些大规模数据集上，ViT能够比CNN模型表现得更好。
 
   

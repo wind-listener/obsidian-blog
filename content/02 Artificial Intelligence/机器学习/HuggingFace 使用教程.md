@@ -1,3 +1,9 @@
+---
+title: "HuggingFace 使用教程"
+date: 2025-09-15
+draft: false
+---
+
 
 
 ## 下载模型文件

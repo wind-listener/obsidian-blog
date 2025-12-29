@@ -1,3 +1,9 @@
+---
+title: "Changes from the original"
+date: 2025-08-07
+draft: false
+---
+
 # Changes from the original
 
 While adapting Peter Norvig's [lis.py](https://github.com/norvig/pytudes/blob/705c0a335c1811a203e79587d7d41865cf7f41c7/py/lis.py) for

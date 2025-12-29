@@ -1,3 +1,9 @@
+---
+title: "Java和JavaScript的关系"
+date: 2025-11-04
+draft: false
+---
+
 
 Java 和 JavaScript 是两种完全不同的编程语言，尽管名称相似，但它们的定位、设计目标和应用场景截然不同。以下是它们的核心关系和区别分析：
 

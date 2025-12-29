@@ -1,3 +1,9 @@
+---
+title: "Gated Convolution 门控卷积"
+date: 2025-08-07
+draft: false
+---
+
 
 # Gated Convolution 门控卷积
 

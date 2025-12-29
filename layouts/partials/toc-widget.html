@@ -1,0 +1,150 @@
+{{ if .TableOfContents }}
+<aside class="toc-widget">
+    <div class="toc-header">
+        <h3>📑 目录</h3>
+        <button id="toggle-toc" class="toggle-btn" title="折叠/展开">
+            <svg class="chevron" width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path d="M4 6l4 4 4-4H4z"/>
+            </svg>
+        </button>
+    </div>
+    <div class="toc-content" id="toc-content">
+        {{ .TableOfContents }}
+    </div>
+</aside>
+
+<script>
+(function() {
+    const tocContent = document.getElementById('toc-content');
+    const toggleBtn = document.getElementById('toggle-toc');
+    const headings = document.querySelectorAll('.article-content h2, .article-content h3, .article-content h4');
+    const tocLinks = tocContent.querySelectorAll('a');
+
+    // Toggle
+    toggleBtn?.addEventListener('click', function() {
+        const isExpanded = tocContent.style.display !== 'none';
+        tocContent.style.display = isExpanded ? 'none' : 'block';
+        this.querySelector('.chevron').style.transform = isExpanded ? 'rotate(-90deg)' : 'rotate(0deg)';
+    });
+
+    // Auto-highlight
+    function updateActiveHeading() {
+        let currentId = '';
+        const scrollPosition = window.scrollY + 100;
+
+        headings.forEach((heading) => {
+            if (heading.offsetTop <= scrollPosition) {
+                currentId = heading.getAttribute('id');
+            }
+        });
+
+        tocLinks.forEach((link) => {
+            link.classList.toggle('active', link.getAttribute('href') === `#${currentId}`);
+        });
+    }
+
+    // Smooth scroll
+    tocLinks.forEach((link) => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.getElementById(this.getAttribute('href').substring(1));
+            if (target) {
+                window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+            }
+        });
+    });
+
+    window.addEventListener('scroll', updateActiveHeading);
+    updateActiveHeading();
+})();
+</script>
+
+<style>
+.toc-widget {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    max-height: 50vh;
+    overflow-y: auto;
+}
+
+.toc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.toc-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+
+.toggle-btn {
+    background: none;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 0.25rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all 0.2s;
+}
+
+.toggle-btn:hover {
+    background: var(--bg-primary);
+    color: var(--link-color);
+}
+
+.chevron {
+    transition: transform 0.3s ease;
+}
+
+.toc-content { font-size: 0.85rem; }
+
+.toc-content ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.toc-content li { margin: 0.35rem 0; }
+
+.toc-content a {
+    display: block;
+    padding: 0.35rem 0.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: all 0.2s;
+}
+
+.toc-content a:hover {
+    background: var(--bg-primary);
+    border-left-color: var(--border-color);
+}
+
+.toc-content a.active {
+    background: var(--bg-primary);
+    color: var(--link-color);
+    border-left-color: var(--link-color);
+    font-weight: 600;
+}
+
+.toc-content ul ul {
+    padding-left: 1.25rem;
+}
+
+.toc-content ul ul a {
+    font-size: 0.8rem;
+}
+
+@media (max-width: 1400px) {
+    .toc-widget { display: none; }
+}
+</style>
+{{ end }}

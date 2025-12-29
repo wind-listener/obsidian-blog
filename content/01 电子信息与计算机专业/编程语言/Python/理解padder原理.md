@@ -1,3 +1,9 @@
+---
+title: "理解padder原理"
+date: 2025-10-27
+draft: false
+---
+
 
 
 ```python

@@ -1,3 +1,9 @@
+---
+title: "argmax 数学符号详解"
+date: 2025-08-07
+draft: false
+---
+
 
 
 ## 基本定义

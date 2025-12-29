@@ -1,3 +1,9 @@
+---
+title: "Speculative Decoding：打破大模型推理的速度枷锁"
+date: 2025-11-06
+draft: false
+---
+
 
 
 > 让小模型先跑一会，大模型来收尾，推理速度提升2-3倍不再是梦想。

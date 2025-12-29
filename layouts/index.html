@@ -45,14 +45,17 @@
 
     <div class="recent-section">
         <h2>最近更新</h2>
-        <div class="recent-posts">
+        <div class="masonry-container" id="recent-posts-masonry">
             {{ range first 6 .Site.RegularPages }}
-            <article class="post-item">
+            <article class="post-card">
                 <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
                 <div class="post-meta">
                     <time>{{ .Date.Format "2006-01-02" }}</time>
                     <span class="section-name">{{ .Section }}</span>
                 </div>
+                {{ if .Summary }}
+                <p class="post-summary">{{ .Summary | truncate 100 }}</p>
+                {{ end }}
             </article>
             {{ end }}
         </div>
@@ -194,58 +197,129 @@
         color: var(--text-primary);
     }
 
-    .recent-posts {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
+    /* Masonry Container */
+    .masonry-container {
+        position: relative;
+        width: 100%;
+        min-height: 400px;
     }
 
-    @media (max-width: 768px) {
-        .recent-posts {
-            grid-template-columns: 1fr;
-        }
-    }
-
-    .post-item {
+    /* Individual Cards */
+    .post-card {
+        position: absolute;
+        width: calc(50% - 0.75rem);
         background: var(--bg-secondary);
         padding: 1.5rem;
         border-radius: 8px;
         border: 1px solid var(--border-color);
-        transition: all 0.2s ease;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
     }
 
-    .post-item:hover {
+    .post-card:hover {
         border-color: var(--link-color);
-        transform: translateX(5px);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     }
 
-    .post-item h3 {
-        font-size: 1rem;
-        font-weight: 500;
-        margin-bottom: 0.5rem;
+    .post-card h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 0.75rem;
+        line-height: 1.4;
     }
 
-    .post-item h3 a {
+    .post-card h3 a {
         text-decoration: none;
         color: var(--text-primary);
+        transition: color 0.2s;
     }
 
-    .post-item h3 a:hover {
+    .post-card h3 a:hover {
         color: var(--link-color);
     }
 
     .post-meta {
         display: flex;
-        gap: 1rem;
-        font-size: 0.75rem;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 0.8rem;
         color: var(--text-secondary);
+        flex-wrap: wrap;
+    }
+
+    .post-meta time::before {
+        content: '📅 ';
+        margin-right: 0.25rem;
     }
 
     .section-name {
         background: var(--bg-primary);
-        padding: 0.125rem 0.5rem;
+        padding: 0.25rem 0.6rem;
         border-radius: 4px;
         border: 1px solid var(--border-color);
+        font-weight: 500;
+    }
+
+    .post-summary {
+        margin-top: 0.75rem;
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+        .post-card {
+            width: 100%;
+        }
+    }
+
+    @media (min-width: 1400px) {
+        .post-card {
+            width: calc(33.333% - 1rem);
+        }
     }
 </style>
+<script>
+(function() {
+    function initMasonry() {
+        const container = document.getElementById('recent-posts-masonry');
+        if (!container) return;
+
+        const cards = Array.from(container.querySelectorAll('.post-card'));
+        const columnCount = window.innerWidth >= 1400 ? 3 : (window.innerWidth >= 768 ? 2 : 1);
+        const gap = 1.5;
+        const cardWidth = container.offsetWidth / columnCount - gap;
+
+        const columnHeights = new Array(columnCount).fill(0);
+
+        cards.forEach((card) => {
+            const shortestColumn = columnHeights.indexOf(Math.min(...columnHeights));
+            const left = shortestColumn * (cardWidth + gap * 16);
+            const top = columnHeights[shortestColumn];
+
+            card.style.left = `${left}px`;
+            card.style.top = `${top}px`;
+            card.style.width = `${cardWidth}px`;
+            card.style.position = 'absolute';
+
+            columnHeights[shortestColumn] += card.offsetHeight + gap * 16;
+        });
+
+        container.style.height = `${Math.max(...columnHeights)}px`;
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMasonry);
+    } else {
+        initMasonry();
+    }
+
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(initMasonry, 250);
+    });
+})();
+</script>
 {{ end }}

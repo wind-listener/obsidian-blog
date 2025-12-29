@@ -1,3 +1,9 @@
+---
+title: "JavaScript的优势和适用场景"
+date: 2025-11-04
+draft: false
+---
+
 JavaScript（JS）作为一门广泛应用的编程语言，其优势和适用场景与其设计初衷和生态发展密切相关，具体如下：
 
 

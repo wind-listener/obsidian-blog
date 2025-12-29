@@ -1,3 +1,9 @@
+---
+title: "**基本结构**"
+date: 2025-08-07
+draft: false
+---
+
 [[toml]]
 
 pyproject.toml 是 Python 项目的配置文件，定义了项目的元数据、依赖项、构建工具等。它是 PEP 518 和 PEP 621 的一部分，用于统一配置现代 Python 项目。

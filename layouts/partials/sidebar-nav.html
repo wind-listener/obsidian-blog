@@ -1,0 +1,278 @@
+{{ $currentSection := .Section }}
+{{ $currentSectionUrlized := .Section | urlize }}
+{{ $currentPage := . }}
+
+{{ $sections := slice
+    "01 电子信息与计算机专业"
+    "02 Artificial Intelligence"
+    "03 Mathematics"
+    "04 健康管理"
+    "05 厨艺"
+    "06 工具使用经验和技巧"
+    "07 现代社会生存指南"
+    "08 哲学"
+    "09 心理学"
+    "10 经济学"
+    "11 语言学"
+    "12 管理学:行政、招聘和方法论"
+}}
+
+<aside class="sidebar">
+    <div class="sidebar-content">
+        <div class="sidebar-header">
+            <h3 class="sidebar-title">📚 内容导航</h3>
+            <div class="sidebar-controls">
+                <button id="expand-all" class="control-btn" title="展开全部">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M8 4l-5 5h10l-5-5z"/>
+                    </svg>
+                </button>
+                <button id="collapse-all" class="control-btn" title="折叠全部">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                        <path d="M8 12l5-5H3l5 5z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <nav class="directory-tree">
+            {{ range $sections }}
+                {{ $section := . }}
+                {{ $sectionUrlized := . | urlize }}
+                {{ $sectionPage := $.Site.GetPage (printf "/%s" .) }}
+                {{ if $sectionPage }}
+                    {{ $isActive := eq $currentSectionUrlized $sectionUrlized }}
+                    <div class="tree-section {{ if $isActive }}active{{ end }}" data-section="{{ $sectionUrlized }}">
+                        <div class="section-header">
+                            <button class="toggle-btn" aria-expanded="{{ $isActive }}">
+                                <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                                    <path d="M4 2l4 4-4 4V2z"/>
+                                </svg>
+                            </button>
+                            <a href="/{{ $sectionUrlized }}/" class="section-link">
+                                {{ . }}
+                            </a>
+                            <span class="page-count">({{ len $sectionPage.RegularPages }})</span>
+                        </div>
+                        <ul class="tree-pages" {{ if not $isActive }}style="display: none;"{{ end }}>
+                            {{ range $sectionPage.RegularPages }}
+                                <li class="{{ if eq $currentPage.RelPermalink .RelPermalink }}current{{ end }}">
+                                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                                </li>
+                            {{ end }}
+                        </ul>
+                    </div>
+                {{ end }}
+            {{ end }}
+        </nav>
+    </div>
+</aside>
+
+<script>
+(function() {
+    'use strict';
+
+    // Toggle individual sections
+    document.querySelectorAll('.toggle-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const section = this.closest('.tree-section');
+            const pages = section.querySelector('.tree-pages');
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+
+            if (isExpanded) {
+                pages.style.display = 'none';
+                this.setAttribute('aria-expanded', 'false');
+                section.classList.remove('expanded');
+            } else {
+                pages.style.display = 'block';
+                this.setAttribute('aria-expanded', 'true');
+                section.classList.add('expanded');
+            }
+        });
+    });
+
+    // Expand all sections
+    document.getElementById('expand-all')?.addEventListener('click', function() {
+        document.querySelectorAll('.tree-section').forEach(section => {
+            const pages = section.querySelector('.tree-pages');
+            const btn = section.querySelector('.toggle-btn');
+            if (pages && btn) {
+                pages.style.display = 'block';
+                btn.setAttribute('aria-expanded', 'true');
+                section.classList.add('expanded');
+            }
+        });
+    });
+
+    // Collapse all sections
+    document.getElementById('collapse-all')?.addEventListener('click', function() {
+        document.querySelectorAll('.tree-section').forEach(section => {
+            const pages = section.querySelector('.tree-pages');
+            const btn = section.querySelector('.toggle-btn');
+            if (pages && btn && !section.classList.contains('active')) {
+                pages.style.display = 'none';
+                btn.setAttribute('aria-expanded', 'false');
+                section.classList.remove('expanded');
+            }
+        });
+    });
+
+    // Initialize expanded state
+    document.querySelectorAll('.tree-section.active').forEach(section => {
+        section.classList.add('expanded');
+    });
+})();
+</script>
+
+<style>
+.sidebar {
+    position: sticky;
+    top: 20px;
+    width: 280px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-title {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+}
+
+.sidebar-controls {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.control-btn {
+    background: none;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 0.25rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.control-btn:hover {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    border-color: var(--link-color);
+}
+
+.directory-tree {
+    font-size: 0.9rem;
+}
+
+.tree-section {
+    margin-bottom: 0.5rem;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 0;
+}
+
+.toggle-btn {
+    background: none;
+    border: none;
+    padding: 0.25rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s;
+}
+
+.tree-section.expanded .toggle-btn .chevron {
+    transform: rotate(90deg);
+}
+
+.section-link {
+    flex: 1;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.section-link:hover {
+    color: var(--link-color);
+}
+
+.tree-section.active .section-link {
+    color: var(--link-color);
+    font-weight: 600;
+}
+
+.page-count {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.tree-pages {
+    list-style: none;
+    padding-left: 1.75rem;
+    margin: 0.25rem 0 0 0;
+}
+
+.tree-pages li {
+    margin: 0.25rem 0;
+}
+
+.tree-pages a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    display: block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.tree-pages a:hover {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.tree-pages li.current a {
+    background: var(--link-color);
+    color: white;
+    font-weight: 500;
+}
+
+/* Smooth scrollbar */
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+</style>

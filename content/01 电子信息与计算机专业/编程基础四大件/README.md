@@ -1,3 +1,9 @@
+---
+title: "first"
+date: 2025-08-07
+draft: false
+---
+
 ## Win系统同步
 先启动 git bash
 ```bsah

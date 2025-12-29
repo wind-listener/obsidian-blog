@@ -1,3 +1,9 @@
+---
+title: "收集箱 （Inbox）"
+date: 2025-08-07
+draft: false
+---
+
 # 收集箱 （Inbox）
 
 # 执行清单 （@Context Task）

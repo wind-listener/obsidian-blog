@@ -1,3 +1,9 @@
+---
+title: "Mixin模式"
+date: 2025-08-07
+draft: false
+---
+
 
 ```python
 class DiffusionPipeline(ConfigMixin, PushToHubMixin):

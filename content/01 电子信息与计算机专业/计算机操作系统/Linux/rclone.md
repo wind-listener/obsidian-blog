@@ -1,3 +1,9 @@
+---
+title: "rclone"
+date: 2025-11-10
+draft: false
+---
+
 `rclone` 是一款功能强大的命令行工具，用于在本地存储、云存储（如 Google Drive、AWS S3、OneDrive 等）之间同步、复制、迁移数据，支持超过 40 种存储服务。以下是其核心指令用法的详细解释：
 
 

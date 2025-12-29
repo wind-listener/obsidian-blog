@@ -1,3 +1,9 @@
+---
+title: "简介"
+date: 2025-08-07
+draft: false
+---
+
 **[Berkeley Function-Calling Leaderboard](https://gorilla.cs.berkeley.edu/leaderboard.html) (BFCL), the first comprehensive evaluation on the LLM's ability to call functions and tools**.
 Quick Links:
 - Live Leaderboard: [Website](https://gorilla.cs.berkeley.edu/leaderboard.html)

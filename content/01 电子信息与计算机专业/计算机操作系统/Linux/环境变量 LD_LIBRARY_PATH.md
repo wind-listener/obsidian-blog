@@ -1,3 +1,9 @@
+---
+title: "环境变量 LD_LIBRARY_PATH"
+date: 2025-11-11
+draft: false
+---
+
 好的，我们来详细介绍一下 `LD_LIBRARY_PATH` 环境变量。这是一个在 Linux 和类 Unix 系统中非常重要的概念，尤其对开发者和系统管理员来说。
 
 ### 一、核心定义

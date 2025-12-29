@@ -1,3 +1,9 @@
+---
+title: "sklearn scikit-learn"
+date: 2025-08-07
+draft: false
+---
+
 ### 1. **Sklearn 简介**
 `scikit-learn`（简称 `sklearn`）是一个基于 Python 的机器学习库，提供了简单易用的工具，用于数据挖掘和数据分析。Sklearn 建立在 NumPy、SciPy 和 Matplotlib 之上，广泛用于构建机器学习模型，特别是分类、回归、聚类、降维等任务。
 https://scikit-learn.org/stable/api/sklearn.html

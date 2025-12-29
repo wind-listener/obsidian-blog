@@ -1,3 +1,9 @@
+---
+title: "TransNetV2：视频分割与场景检测的革新者"
+date: 2025-08-07
+draft: false
+---
+
 
 ## TransNetV2 的核心概念
 

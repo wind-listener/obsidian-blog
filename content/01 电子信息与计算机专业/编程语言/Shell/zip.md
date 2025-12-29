@@ -1,3 +1,9 @@
+---
+title: "zip"
+date: 2025-10-17
+draft: false
+---
+
 `zip` 是 Linux/Unix 系统中常用的文件压缩与归档工具，用于创建 ZIP 格式的压缩包（.zip 文件），支持跨平台（Windows、macOS 等均兼容）。以下是其详细用法：
 
 

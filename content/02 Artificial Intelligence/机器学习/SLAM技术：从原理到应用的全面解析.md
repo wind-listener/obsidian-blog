@@ -1,3 +1,9 @@
+---
+title: "SLAM技术：从原理到应用的全面解析"
+date: 2025-08-07
+draft: false
+---
+
 ## 1. 技术概述
 **即时定位与地图构建（Simultaneous Localization and Mapping，SLAM）** 是机器人实现自主导航的核心技术，其核心目标是让机器人在未知环境中同时完成**自身定位**和**环境建模**。该技术由Smith、Self和Cheeseman于1988年首次提出，现已成为自动驾驶、服务机器人、AR/VR等领域的基础支撑技术。
 

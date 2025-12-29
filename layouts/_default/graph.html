@@ -12,7 +12,7 @@
 <script>
     // 从文章中提取链接关系
     const posts = [
-        {{ range where .Site.RegularPages "Section" "posts" }}
+        {{ range .Site.RegularPages }}
         {
             title: {{ .Title | jsonify }},
             url: {{ .Permalink | jsonify }},

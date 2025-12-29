@@ -1,3 +1,9 @@
+---
+title: "zotero"
+date: 2025-10-14
+draft: false
+---
+
 同步设置
 dav.jianguoyun.com/dav
 
