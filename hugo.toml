@@ -64,11 +64,7 @@ excludeFiles = [
     name = "分类"
     url = "/categories/"
     weight = 3
-  [[menu.main]]
-    name = "搜索"
-    url = "/search/"
-    weight = 4
-  [[menu.main]]
+    [[menu.main]]
     name = "知识图谱"
     url = "/graph/"
     weight = 5

@@ -6,29 +6,54 @@
     <title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
     <meta name="description" content="{{ .Site.Params.description }}">
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <!-- KaTeX for Math Rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css" integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js" integrity="sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUbKyIyUH" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"></script>
+
+    <!-- Fuse.js for Search -->
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Schibsted+Grotesk:wght@400;600;700&family=Source+Sans+Pro:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap');
 
         :root {
             --bg-primary: #ffffff;
-            --bg-secondary: #f8f9fa;
-            --text-primary: #1a1a1a;
-            --text-secondary: #6c757d;
-            --link-color: #5568fe;
-            --border-color: #e9ecef;
-            --code-bg: #f4f5f7;
-            --shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --bg-secondary: #fafafa;
+            --text-primary: #2b2b2b;
+            --text-secondary: #4e4e4e;
+            --text-tertiary: #646464;
+            --text-muted: #b8b8b8;
+            --link-color: #284b63;
+            --link-hover: #7b97aa;
+            --border-color: #e5e5e5;
+            --code-bg: #f4f4f4;
+            --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --highlight: #8f9fa926;
+            --titleFont: "Schibsted Grotesk", system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            --headerFont: "Schibsted Grotesk", system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            --bodyFont: "Source Sans Pro", system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            --codeFont: "IBM Plex Mono", ui-monospace, SFMono-Regular, SF Mono, Menlo, monospace;
         }
 
         [data-theme="dark"] {
-            --bg-primary: #0d1117;
-            --bg-secondary: #161b22;
-            --text-primary: #c9d1d9;
-            --text-secondary: #8b949e;
-            --link-color: #58a6ff;
-            --border-color: #30363d;
-            --code-bg: #161b22;
-            --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --bg-primary: #161618;
+            --bg-secondary: #1a1a1a;
+            --text-primary: #ebebec;
+            --text-secondary: #d4d4d4;
+            --text-tertiary: #949494;
+            --text-muted: #646464;
+            --link-color: #7b97aa;
+            --link-hover: #84a59d;
+            --border-color: #393639;
+            --code-bg: #2a2a2a;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+            --highlight: #8f9fa926;
         }
 
         * {
@@ -38,13 +63,19 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            font-size: 14px;
-            line-height: 1.6;
-            color: var(--text-primary);
+            font-family: var(--bodyFont);
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-secondary);
             background-color: var(--bg-primary);
             transition: background-color 0.3s, color 0.3s;
             font-weight: 400;
+            -webkit-text-size-adjust: none;
+            -moz-text-size-adjust: none;
+            text-size-adjust: none;
+            scroll-behavior: smooth;
+            width: 100vw;
+            overflow-x: hidden;
         }
 
         .container {
@@ -57,22 +88,15 @@
         header {
             background-color: var(--bg-primary);
             border-bottom: 1px solid var(--border-color);
-            padding: 0.75rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-            background-color: rgba(255, 255, 255, 0.9);
+            padding: 2rem 0 1.5rem;
+            position: relative;
         }
 
-        [data-theme="dark"] header {
-            background-color: rgba(13, 17, 23, 0.9);
-        }
-
-        header .container {
+        .container {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .site-title {
@@ -81,23 +105,39 @@
             color: var(--text-primary);
             text-decoration: none;
             letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            font-family: var(--headerFont);
+        }
+
+        .site-title img.logo {
+            height: 24px;
+            margin-right: 8px;
+            width: auto;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+        }
+
+        .site-title img.logo:hover {
+            opacity: 1;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 0.5rem;
+            gap: 0.75rem;
             align-items: center;
         }
 
         nav a {
-            color: var(--text-secondary);
+            color: var(--text-primary);
             text-decoration: none;
-            font-size: 0.875rem;
+            font-size: 0.95rem;
             font-weight: 500;
             padding: 0.4rem 0.8rem;
             border-radius: 6px;
             transition: all 0.2s;
+            color: var(--text-secondary);
         }
 
         nav a:hover {
@@ -106,8 +146,105 @@
         }
 
         main {
-            padding: 2rem 0;
+            padding: 0;
             min-height: calc(100vh - 180px);
+        }
+
+        .page {
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+
+        /* Typography Improvements */
+        p, ul, text, a, tr, td, li, ol, ul, .katex, .math, .typst-doc, g[class~=typst-text] {
+            color: var(--text-secondary);
+            fill: var(--text-secondary);
+            overflow-wrap: break-word;
+            text-wrap: pretty;
+            line-height: 1.7rem;
+        }
+
+        strong {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        a {
+            color: var(--link-color);
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--link-hover);
+        }
+
+        h1, h2, h3, h4, h5, h6, thead {
+            font-family: var(--headerFont);
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-top: 2.25rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            margin-top: 1.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        h4, h5, h6 {
+            font-size: 1.25rem;
+            margin-top: 1.25rem;
+            margin-bottom: 0.875rem;
+            line-height: 1.5;
+        }
+
+        /* Code styling */
+        code {
+            font-family: var(--codeFont);
+            font-size: 0.9em;
+            background: var(--code-bg);
+            color: var(--text-primary);
+            border-radius: 4px;
+            padding: 0.15em 0.25em;
+        }
+
+        pre {
+            font-family: var(--codeFont);
+            background-color: var(--code-bg);
+            padding: 1rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            border: none;
+            font-size: 0.85rem;
+        }
+
+        /* Selection styling */
+        ::selection {
+            background: color-mix(in srgb, var(--link-color) 60%, transparent);
+            color: var(--text-primary);
         }
 
         /* Footer */
@@ -235,6 +372,11 @@
             .site-title {
                 font-size: 1rem;
             }
+
+            .site-title img.logo {
+                height: 20px;
+                margin-right: 6px;
+            }
         }
     </style>
 </head>
@@ -247,7 +389,23 @@
 
     {{ partial "footer.html" . }}
 
+    {{ partial "search-modal.html" . }}
+
     <script>
+        // KaTeX Initialization
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '\\[', right: '\\]', display: true},
+                    {left: '$', right: '$', display: false},
+                    {left: '\\(', right: '\\)', display: false}
+                ],
+                throwOnError: false,
+                trust: true
+            });
+        });
+
         // Dark mode toggle
         const themeToggle = document.getElementById('theme-toggle');
         const html = document.documentElement;

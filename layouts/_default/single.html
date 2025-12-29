@@ -37,25 +37,7 @@
         <!-- Giscus 评论系统 -->
         <div class="comments-section">
             <h3>💬 评论</h3>
-            <div class="giscus-container">
-                <!-- Giscus 脚本 -->
-                <script src="https://giscus.app/client.js"
-                        data-repo="wind-listener/obsidian-blog"
-                        data-repo-id="R_kgDOQtryCg"
-                        data-category="General"
-                        data-category-id="DIC_kwDOQtryCs4C0KUt"
-                        data-mapping="pathname"
-                        data-strict="0"
-                        data-reactions-enabled="1"
-                        data-emit-metadata="0"
-                        data-input-position="top"
-                        data-theme="preferred_color_scheme"
-                        data-lang="zh-CN"
-                        data-loading="lazy"
-                        crossorigin="anonymous"
-                        async>
-                </script>
-            </div>
+            <div id="giscus-container"></div>
         </div>
     </article>
 
@@ -230,7 +212,9 @@
     .article-header {
         margin-bottom: 2rem;
         padding-bottom: 1.5rem;
-        border-bottom: 2px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
+        position: relative;  /* 明确设置为relative，不是sticky */
+        z-index: 1;
     }
 
     .article-header h1 {
@@ -239,6 +223,7 @@
         margin-bottom: 1rem;
         color: var(--text-primary);
         line-height: 1.3;
+        position: static;  /* 确保不sticky */
     }
 
     .article-meta {
@@ -408,37 +393,195 @@
     .comments-section {
         margin-top: 4rem;
         padding-top: 2rem;
-        border-top: 2px solid var(--border-color);
+        border-top: 1px solid var(--border-color);
     }
 
     .comments-section h3 {
-        font-size: 1.3rem;
+        font-family: var(--headerFont);
+        font-size: 1.5rem;
         font-weight: 600;
-        margin-bottom: 1.5rem;
+        margin-bottom: 2rem;
         color: var(--text-primary);
     }
 
-    .giscus-container {
+    .comments-section h3::before {
+        content: '';
+        display: inline-block;
+        width: 4px;
+        height: 1.2em;
+        background: var(--link-color);
+        border-radius: 2px;
+        margin-right: 0.75rem;
+        vertical-align: middle;
+    }
+
+    #giscus-container {
         background: var(--bg-secondary);
-        padding: 1.5rem;
+        padding: 2rem;
         border-radius: 8px;
         border: 1px solid var(--border-color);
+        transition: all 0.3s ease;
     }
 
-    .comments-notice {
-        font-size: 0.85rem;
-        color: var(--text-secondary);
-        background: var(--bg-primary);
-        padding: 1rem;
-        border-radius: 6px;
-        border-left: 4px solid var(--link-color);
-        margin-bottom: 1rem;
-        line-height: 1.6;
+    #giscus-container:hover {
+        border-color: var(--link-color);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
     }
 
-    .comments-notice a {
-        color: var(--link-color);
-        font-weight: 600;
+    /* 自定义 Giscus 样式以匹配网站主题 */
+    .giscus-frame {
+        width: 100% !important;
+        min-height: 400px !important;
+        border-radius: 6px !important;
+    }
+
+    /* Giscus 主题适配 */
+    .giscus-comment-box {
+        background: var(--bg-primary) !important;
+        border: 1px solid var(--border-color) !important;
+        border-radius: 6px !important;
+    }
+
+    .giscus-header {
+        background: var(--bg-secondary) !important;
+        border-bottom: 1px solid var(--border-color) !important;
+    }
+
+    .giscus-comment-body {
+        background: var(--bg-primary) !important;
+        color: var(--text-secondary) !important;
+    }
+
+    .giscus-comment-content {
+        color: var(--text-secondary) !important;
+        font-family: var(--bodyFont) !important;
+        font-size: 0.95rem !important;
+        line-height: 1.6 !important;
+    }
+
+    .giscus-reaction-button {
+        background: var(--bg-secondary) !important;
+        border: 1px solid var(--border-color) !important;
+        color: var(--text-secondary) !important;
+    }
+
+    .giscus-reaction-button:hover {
+        background: var(--highlight) !important;
+        border-color: var(--link-color) !important;
+    }
+
+    .giscus-reaction-button.active {
+        background: var(--link-color) !important;
+        border-color: var(--link-color) !important;
+        color: white !important;
+    }
+
+    .giscus-input-wrapper {
+        background: var(--bg-primary) !important;
+        border: 1px solid var(--border-color) !important;
+        border-radius: 6px !important;
+    }
+
+    .giscus-input {
+        background: var(--bg-primary) !important;
+        color: var(--text-secondary) !important;
+        border: none !important;
+        font-family: var(--bodyFont) !important;
+        font-size: 0.95rem !important;
+    }
+
+    .giscus-input:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+
+    .giscus-button {
+        background: var(--link-color) !important;
+        border: none !important;
+        border-radius: 6px !important;
+        color: white !important;
+        font-weight: 500 !important;
+        transition: all 0.2s !important;
+    }
+
+    .giscus-button:hover {
+        background: var(--link-hover) !important;
+    }
+
+    .giscus-reply-button {
+        background: var(--highlight) !important;
+        border: 1px solid var(--border-color) !important;
+        border-radius: 4px !important;
+        color: var(--link-color) !important;
+        font-weight: 500 !important;
+        padding: 0.25rem 0.75rem !important;
+        transition: all 0.2s !important;
+    }
+
+    .giscus-reply-button:hover {
+        background: var(--link-color) !important;
+        color: white !important;
+        border-color: var(--link-color) !important;
     }
 </style>
+
+    <!-- Giscus 动态加载脚本 -->
+    <script>
+        // 主题切换和 Giscus 初始化
+        function initGiscus() {
+            const giscusContainer = document.getElementById('giscus-container');
+
+            // 获取当前主题
+            const theme = document.documentElement.getAttribute('data-theme') || 'light';
+
+            // Giscus 配置
+            const config = {
+                repo: 'wind-listener/obsidian-blog',
+                repoId: 'R_kgDOQtryCg',
+                category: 'General',
+                categoryId: 'DIC_kwDOQtryCs4C0KUt',
+                mapping: 'pathname',
+                strict: '0',
+                reactionsEnabled: '1',
+                emitMetadata: '0',
+                inputPosition: 'top',
+                theme: theme === 'dark' ? 'dark' : 'light',
+                lang: 'zh-CN',
+                loading: 'lazy',
+                origin: 'https://giscus.app'
+            };
+
+            // 创建 Giscus iframe
+            const script = document.createElement('script');
+            script.src = 'https://giscus.app/client.js';
+            script.setAttribute('crossorigin', 'anonymous');
+            script.setAttribute('async', '');
+
+            // 设置数据属性
+            Object.keys(config).forEach(key => {
+                script.setAttribute(`data-${key}`, config[key]);
+            });
+
+            // 清空容器并添加脚本
+            giscusContainer.innerHTML = '';
+            giscusContainer.appendChild(script);
+        }
+
+        // 监听主题变化
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'data-theme') {
+                    initGiscus();
+                }
+            });
+        });
+
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ['data-theme']
+        });
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', initGiscus);
+    </script>
 {{ end }}

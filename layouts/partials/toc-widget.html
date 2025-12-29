@@ -22,9 +22,7 @@
 
     // Toggle
     toggleBtn?.addEventListener('click', function() {
-        const isExpanded = tocContent.style.display !== 'none';
-        tocContent.style.display = isExpanded ? 'none' : 'block';
-        this.querySelector('.chevron').style.transform = isExpanded ? 'rotate(-90deg)' : 'rotate(0deg)';
+        this.closest('.toc-widget').classList.toggle('collapsed');
     });
 
     // Auto-highlight
@@ -61,12 +59,12 @@
 
 <style>
 .toc-widget {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 1.5rem;
+    background: transparent;  /* 移除背景色 */
+    border: none;  /* 移除边框 */
+    border-radius: 0;
+    padding: 0;
     margin-bottom: 1.5rem;
-    max-height: 50vh;
+    max-height: 60vh;
     overflow-y: auto;
 }
 
@@ -74,21 +72,22 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 2px solid var(--border-color);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(var(--border-color-rgb, 229, 229, 229), 0.5);  /* 极细边框 */
 }
 
 .toc-header h3 {
     margin: 0;
-    font-size: 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
     color: var(--text-primary);
+    letter-spacing: -0.2px;
 }
 
 .toggle-btn {
-    background: none;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
+    background: transparent;
+    border: none;
     padding: 0.25rem;
     cursor: pointer;
     color: var(--text-secondary);
@@ -96,15 +95,24 @@
 }
 
 .toggle-btn:hover {
-    background: var(--bg-primary);
     color: var(--link-color);
 }
 
 .chevron {
-    transition: transform 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.toc-content { font-size: 0.85rem; }
+.toc-widget.collapsed .chevron {
+    transform: rotate(-90deg);
+}
+
+.toc-widget.collapsed .toc-content {
+    display: none;
+}
+
+.toc-content {
+    font-size: 0.8125rem;
+}
 
 .toc-content ul {
     list-style: none;
@@ -112,35 +120,39 @@
     margin: 0;
 }
 
-.toc-content li { margin: 0.35rem 0; }
+.toc-content li {
+    margin: 0.2rem 0;
+}
 
 .toc-content a {
     display: block;
-    padding: 0.35rem 0.5rem;
+    padding: 0.3rem 0.5rem;
     color: var(--text-secondary);
     text-decoration: none;
-    border-left: 3px solid transparent;
+    border-left: 2px solid transparent;
     transition: all 0.2s;
+    border-radius: 0 4px 4px 0;
 }
 
 .toc-content a:hover {
-    background: var(--bg-primary);
-    border-left-color: var(--border-color);
+    background: rgba(var(--link-color-rgb, 40, 75, 99), 0.08);
+    border-left-color: var(--link-color);
+    color: var(--text-primary);
 }
 
 .toc-content a.active {
-    background: var(--bg-primary);
+    background: rgba(var(--link-color-rgb, 40, 75, 99), 0.12);
     color: var(--link-color);
     border-left-color: var(--link-color);
     font-weight: 600;
 }
 
 .toc-content ul ul {
-    padding-left: 1.25rem;
+    padding-left: 1rem;
 }
 
 .toc-content ul ul a {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
 }
 
 @media (max-width: 1400px) {
